@@ -163,9 +163,11 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
               <div className="eyebrow">Our Story</div>
               <h1 className="page-title" id="about-title">Rooted in growth.<br /><em>Grounded in possibility.</em></h1>
               <p className="about-body">
-                At Saguaro Blossoms, we believe every learner carries within them a unique and vivid story waiting to bloom. Like the saguaro blossom — Arizona&apos;s state flower — growth happens at its own pace, in its own season, and in its own remarkable way.
+                My education career began in elementary settings where I worked as both a paraprofessional and substitute teacher, building a foundational understanding of literacy development across ages and grade levels. After focusing on family, I returned to education and earned my teaching credentials and additional experience as a tutor and teacher before moving into higher education, where I continue to work as a professor of English.
                 <br /><br />
-                We serve K–12 students, homeschool families, college students, and adult learners across reading, writing, and ESL. Our approach is holistic, individualized, and deeply human — because every learner deserves to be seen, heard, and celebrated.
+                My credentials include a bachelor’s degree and a master’s degree with a focus in English Studies from Arizona State University, graduate coursework in applied linguistics, and ongoing doctoral studies in English Literature. I also hold memberships in AZTESOL, AETA, NCTE/CCCC, TESOL, MLA, and GSOLE — professional organizations that keep me grounded in current research and best practices.
+                <br /><br />
+                My work is driven by a student-centered philosophy rooted in building confidence, fostering holistic growth, and honoring each learner’s individual pace. Whether you’re working within a specific curriculum or need custom lessons, I adapt to what serves you best.
               </p>
             </div>
             <div className="value-stack">
@@ -184,8 +186,15 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
             </div>
           </section>
 
-          <section className="philosophy-section" aria-labelledby="philosophy-title">
-            <h2 className="section-title" id="philosophy-title" style={{ textAlign: 'center', marginBottom: '3rem' }}>The seed <em>to harvest</em> philosophy</h2>
+          <section className="philosophy-section" aria-labelledby="why-saguaro-title">
+            <h2 className="section-title" id="why-saguaro-title" style={{ textAlign: 'center', marginBottom: '1.5rem' }}>Why Saguaro Blossoms?</h2>
+            <p className="section-sub" style={{ maxWidth: 920, margin: '0 auto 1rem', textAlign: 'center' }}>
+              I chose this name because the saguaro cactus embodies everything I believe about learning and growth. Unlike wildflowers that bloom quickly and fade, the saguaro takes time. It establishes deep roots, builds a strong structure, and develops resilience to withstand the desert’s challenges.
+            </p>
+            <p className="section-sub" style={{ maxWidth: 920, margin: '0 auto 3rem', textAlign: 'center' }}>
+              Growth isn’t about speed, it’s about depth, resilience, and becoming stronger through process. Each learner’s journey is unique. Your pace is yours — and when you bloom, it will be rooted in something solid that will sustain you.
+            </p>
+            <h3 className="section-title" id="philosophy-title" style={{ textAlign: 'center', marginBottom: '3rem', fontSize: 'clamp(2rem, 5vw, 4rem)' }}>The seed <em>to harvest</em> philosophy</h3>
             <div className="philosophy-grid">
               <div className="philosophy-card">
                 <div className="philosophy-num">01</div>
@@ -274,6 +283,35 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
               <p>Empowering adults at every stage — including English language learners — with dignity</p>
             </div>
           </div>
+
+          <section className="philosophy-section" aria-labelledby="pricing-title">
+            <h2 className="section-title" id="pricing-title" style={{ textAlign: 'center', marginBottom: '1rem' }}>Individual Session Pricing</h2>
+            <p className="section-sub" style={{ maxWidth: 860, margin: '0 auto 2rem', textAlign: 'center' }}>
+              All sessions include 30–60 minutes of instruction, 15 minutes of review and next steps, and a weekly parent conference when applicable.
+            </p>
+            <div className="services-grid" aria-label="Pricing options">
+              <div className="service-card">
+                <span className="service-tag">K–8</span>
+                <h3>$40/hour K-8</h3>
+                <p>Reading, writing, and language arts support for elementary and middle school learners.</p>
+              </div>
+              <div className="service-card">
+                <span className="service-tag">9–College</span>
+                <h3>$50/hour grades 9-college</h3>
+                <p>Academic reading, essay writing, and English support for high school, dual enrollment, and college learners.</p>
+              </div>
+              <div className="service-card">
+                <span className="service-tag">Adult / ESL</span>
+                <h3>$40/hour adult learners and/or ESL</h3>
+                <p>English language, reading, writing, workplace communication, and confidence-building support.</p>
+              </div>
+              <div className="service-card">
+                <span className="service-tag">Packages</span>
+                <h3>Commitment discounts available</h3>
+                <p>Small groups are $30/hour per individual. Family rates keep the initial rate as stated, with additional members receiving $5 off for the second and subsequent learners. Customized asynchronous packages are $250–$300 depending on grade level and need. Six- and eight-week commitments receive 10% off; twelve-week commitments receive 15% off. A 24-hour cancellation policy applies, with a cancellation fee of ½ the standard rate for cancellations not made within 24 hours.</p>
+              </div>
+            </div>
+          </section>
         </div>
 
         {/* ===== CONTACT ===== */}

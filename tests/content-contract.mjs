@@ -97,4 +97,24 @@ for (const marker of [
 requireIncludes(layout, 'Saguaro Blossoms Learning')
 requireIncludes(layout, 'Learning as unique and vivid as the saguaro blossom')
 
+// Cynthia feedback from 2026-04-27: restore her About blurb, Why Saguaro
+// Blossoms rationale, and refined pricing while keeping the site accessible.
+for (const marker of [
+  'My education career began in elementary settings',
+  'graduate coursework in applied linguistics',
+  'ongoing doctoral studies in English Literature',
+  'Why Saguaro Blossoms?',
+  'the saguaro cactus embodies everything I believe about learning and growth',
+  'Growth isn’t about speed',
+  'Individual Session Pricing',
+  '$40/hour K-8',
+  '$50/hour grades 9-college',
+  'Family rates keep the initial rate as stated',
+  '24-hour cancellation policy applies',
+  'aria-labelledby="why-saguaro-title"',
+  'aria-labelledby="pricing-title"',
+]) requireIncludes(exactSite, marker)
+requireIncludes(css, '.bloom-center-text { color: var(--dark); font-weight: 700; }', 'accessible bloom center text override')
+requireIncludes(css, 'outline: 3px solid var(--pink);', 'high-contrast visible focus outline')
+
 console.log('exact attachment conversion contract passed')
