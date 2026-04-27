@@ -1,120 +1,92 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import crypto from 'node:crypto'
 
 const root = process.cwd()
-const read = (file) => fs.existsSync(path.join(root, file)) ? fs.readFileSync(path.join(root, file), 'utf8') : ''
+const read = (file) => fs.readFileSync(path.join(root, file), 'utf8')
+const source = fs.readFileSync('/home/marco/obsidian-vault/Agent-Mercury/ops/cynthia-latest-design/saguaro_blossoms_v2.html', 'utf8')
 const page = read('app/page.tsx')
-const site = read('components/site.tsx')
+const exactSite = read('app/exact-site.tsx')
+const combinedPages = page + exactSite + read('app/about/page.tsx') + read('app/services/page.tsx') + read('app/contact/page.tsx')
 const css = read('app/globals.css')
-const about = read('app/about/page.tsx')
-const services = read('app/services/page.tsx')
-const contact = read('app/contact/page.tsx')
+const layout = read('app/layout.tsx')
 
-function assertIncludes(haystack, needle, label = needle) {
-  if (!haystack.includes(needle)) {
-    console.error(`Missing ${label}: ${needle}`)
-    process.exit(1)
-  }
-}
-
-function assertNotIncludes(haystack, needle, label = needle) {
-  if (haystack.includes(needle)) {
-    console.error(`Unexpected ${label}: ${needle}`)
-    process.exit(1)
-  }
-}
-
-const requiredCopy = [
-  'Saguaro Blossoms Learning',
-  'Where every learner blossoms at their own pace',
-  'Learning as unique and vivid as the saguaro blossom',
-  'Every reader. Every writer. Every learner.',
-  'Nurturing readers',
-  'Nurturing writers',
-  'Nurturing confidence',
-  'Donde cada estudiante florece',
-  'Learning for every season of life',
-  'Rooted in growth.',
-  'Grounded in possibility.',
-  'The seed to harvest philosophy',
-  'Reading Development',
-  'Writing & Expression',
-  'English as a Second Language',
-  'Homeschool Support',
-  'Your story matters.',
-  "Let's grow it together.",
-]
-for (const text of requiredCopy) assertIncludes(page + about + services + contact + site, text)
-
-const exactDesignClasses = [
-  'className="hero"',
-  'className="hero-left"',
-  'className="hero-right"',
-  'className="bloom-art"',
-  'className="bloom-petals"',
-  'className="bloom-center-circle"',
-  'className="tagline-strip"',
-  'className="features-grid"',
-  'className="about-hero"',
-  'className="philosophy-grid"',
-  'className="services-hero"',
-  'className="services-grid"',
-  'className="contact-form-wrap"',
-]
-for (const klass of exactDesignClasses) assertIncludes(page + about + services + contact, klass)
-
-const cssTokens = [
-  '--pink:        #D4006A',
-  '.hero {',
-  '.hero-right::before',
-  '.bloom-petals',
-  '.petal:nth-child(8)',
-  '.tagline-strip',
-  '.service-card::before',
-  '@media (max-width: 900px)',
-  '@media (max-width: 640px)',
-  '@media (prefers-reduced-motion: reduce)',
-  '.sr-only',
-  ':focus-visible',
-]
-for (const token of cssTokens) assertIncludes(css, token)
-
-assertNotIncludes(page, 'blur-3xl', 'old cloud/blur approximation')
-assertNotIncludes(page, 'bg-gradient-to-br', 'old hero gradient approximation')
-assertNotIncludes(css, 'outline: none;', 'inaccessible focus removal')
-
-const petalCount = (page.match(/className="petal"/g) || []).length
-if (petalCount !== 8) {
-  console.error(`Expected exactly 8 decorative petals, found ${petalCount}`)
+function fail(message) {
+  console.error(message)
   process.exit(1)
 }
 
-const accessibilityContracts = [
-  'aria-label="Primary navigation"',
-  'aria-hidden="true"',
-  'htmlFor="first-name"',
-  'id="first-name"',
-  'htmlFor="last-name"',
-  'id="last-name"',
-  'htmlFor="email"',
-  'id="email"',
-  'htmlFor="learner-type"',
-  'id="learner-type"',
-  'htmlFor="interest"',
-  'id="interest"',
-  'htmlFor="story"',
-  'id="story"',
-]
-for (const token of accessibilityContracts) assertIncludes(page + about + services + contact + site, token)
-
-const appCopy = page + about + services + contact + site
-const typoExpectations = [
-  ['I see every learner', 'I see every learned'],
-  ['Every learner blooms at their own pace', 'Every learner bloom at their own pace'],
-]
-for (const [good, bad] of typoExpectations) {
-  assertIncludes(appCopy, good)
-  assertNotIncludes(appCopy, bad)
+function requireIncludes(haystack, needle, label = needle) {
+  if (!haystack.includes(needle)) fail(`Missing ${label}: ${needle}`)
 }
 
-console.log('content/design/accessibility contract passed')
+function extractStyle(html) {
+  const match = html.match(/<style>([\s\S]*?)<\/style>/)
+  if (!match) fail('Provided HTML has no <style> block')
+  return match[1].trim()
+}
+
+function sourceHas(needle) {
+  requireIncludes(source, needle, `source attachment ${needle}`)
+}
+
+// Source-of-truth attachment markers.
+for (const marker of [
+  '<nav>',
+  '<div class="page active" id="page-home">',
+  '<section class="hero">',
+  '<div class="bloom-art">',
+  '<div class="tagline-strip">',
+  '<div class="page" id="page-about">',
+  '<div class="page" id="page-services">',
+  '<div class="page" id="page-contact">',
+  'function showPage(page)',
+]) sourceHas(marker)
+
+// Next implementation must be a direct conversion of the provided single-file SPA,
+// not a redesigned multi-page approximation.
+requireIncludes(exactSite, "'use client'", 'client-side converted SPA')
+requireIncludes(exactSite, 'const [activePage, setActivePage]', 'showPage state')
+requireIncludes(exactSite, 'function showPage(pageName', 'converted showPage behavior')
+requireIncludes(combinedPages, 'initialPage="home"', 'home route initial page')
+requireIncludes(combinedPages, 'initialPage="about"', 'about route initial page')
+requireIncludes(combinedPages, 'initialPage="services"', 'services route initial page')
+requireIncludes(combinedPages, 'initialPage="contact"', 'contact route initial page')
+requireIncludes(exactSite, 'id="page-home"', 'home page id')
+requireIncludes(exactSite, 'id="page-about"', 'about page id')
+requireIncludes(exactSite, 'id="page-services"', 'services page id')
+requireIncludes(exactSite, 'id="page-contact"', 'contact page id')
+requireIncludes(exactSite, 'className={`page ${activePage === \'home\' ? \'active\' : \'\'}`}', 'active home page class')
+requireIncludes(exactSite, 'className="hero"', 'exact hero class')
+requireIncludes(exactSite, 'className="bloom-art"', 'exact bloom art class')
+requireIncludes(exactSite, 'className="bloom-petals"', 'exact bloom petals class')
+requireIncludes(exactSite, 'className="bloom-center-circle"', 'exact bloom center class')
+requireIncludes(exactSite, 'className="tagline-strip"', 'exact tagline strip class')
+requireIncludes(exactSite, 'showPage(\'contact\')', 'contact navigation conversion')
+if (combinedPages.includes('from \'@/components/site\'') || combinedPages.includes('from "@/components/site"')) {
+  fail('Homepage still imports redesigned shared shell instead of direct attachment conversion')
+}
+
+// Keep the exact reference desktop CSS first; append mobile/accessibility overrides only after it.
+const referenceStyle = extractStyle(source)
+const normalizedCss = css.replace(/@tailwind[^;]+;\s*/g, '').trim()
+if (!normalizedCss.startsWith(referenceStyle)) {
+  const expectedHash = crypto.createHash('sha256').update(referenceStyle).digest('hex')
+  const actualPrefixHash = crypto.createHash('sha256').update(normalizedCss.slice(0, referenceStyle.length)).digest('hex')
+  fail(`Desktop CSS is not copied verbatim from attachment first. expected prefix sha256 ${expectedHash}, got ${actualPrefixHash}`)
+}
+
+// Accessibility/mobile enhancements required, but they must not replace desktop source CSS.
+for (const marker of [
+  'skip-link',
+  'aria-label="Primary navigation"',
+  'aria-labelledby="home-title"',
+  'htmlFor="first-name"',
+  '@media (max-width: 760px)',
+  '@media (prefers-reduced-motion: reduce)',
+]) requireIncludes(exactSite + css, marker)
+
+requireIncludes(layout, 'Saguaro Blossoms Learning')
+requireIncludes(layout, 'Learning as unique and vivid as the saguaro blossom')
+
+console.log('exact attachment conversion contract passed')
