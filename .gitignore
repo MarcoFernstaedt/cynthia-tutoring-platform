@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+.vercel/
+
+# local env
+.env*
+!.env.example
+
+# Python/virtualenv caches
+walkthrough/.venv/
+__pycache__/
+*.py[cod]
+
+# OS/editor
+.DS_Store
+*.swp
+
+# client/email intake artifacts not for public repo
+intake/
+draft_email_to_cynthia.md
+business website ideas and notes.docx
