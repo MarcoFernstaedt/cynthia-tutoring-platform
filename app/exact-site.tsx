@@ -3,6 +3,7 @@
 import { FormEvent, useState } from 'react'
 
 type PageName = 'home' | 'about' | 'services' | 'contact'
+type Language = 'en' | 'es'
 const pages: PageName[] = ['home', 'about', 'services', 'contact']
 
 function cx(active: boolean) {
@@ -11,8 +12,51 @@ function cx(active: boolean) {
 
 export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage?: PageName }) {
   const [activePage, setActivePage] = useState<PageName>(initialPage)
+  const [language, setLanguage] = useState<Language>('en')
   const [submitted, setSubmitted] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+
+  const copy = {
+    en: {
+      home: 'Home', about: 'About', services: 'Services', getStarted: 'Get Started',
+      location: 'Yuma, Arizona', heroTitle: <>Where every<br />learner <em>blossoms</em><br />at their own pace</>,
+      heroTagline: 'Learning as unique and vivid as the saguaro blossom. Rooted in growth. Grounded in possibility.',
+      begin: 'Begin Your Journey', explore: 'Explore Services',
+      strip: ['Nurturing readers', 'Nurturing writers', 'Nurturing confidence', 'K–12 · College · Adult · ESL · Homeschool', 'Donde cada estudiante florece'],
+      featuresTitle: <>Learning for <em>every</em> season of life</>,
+      featuresSub: 'From kindergarten to adulthood — every learner finds their harvest here',
+      contactLocation: <>Yuma, Arizona<br />Serving the greater Arizona area</>,
+      footerTagline: <>Every learner blooms at their own pace.<br />Learning as unique and vivid as you are.</>,
+      packageHeading: 'Commitment discounts available', packageTag: 'Packages',
+      packageBullets: [
+        'Small groups are $30/hour per individual.',
+        'Family rates keep the initial rate as stated, with additional members receiving $5 off for the second and subsequent learners.',
+        'Customized asynchronous packages are $250–$300 depending on grade level and need.',
+        'Six- and eight-week commitments receive 10% off; twelve-week commitments receive 15% off.',
+        'A 24-hour cancellation policy applies, with a cancellation fee of ½ the standard rate for cancellations not made within 24 hours.',
+      ],
+    },
+    es: {
+      home: 'Inicio', about: 'Acerca de', services: 'Servicios', getStarted: 'Comenzar',
+      location: 'Yuma, Arizona', heroTitle: <>Donde cada<br />estudiante <em>florece</em><br />a su propio ritmo</>,
+      heroTagline: 'Aprendizaje tan único y vivo como la flor del saguaro. Con raíces en el crecimiento y basado en la posibilidad.',
+      begin: 'Comienza tu camino', explore: 'Explorar servicios',
+      strip: ['Lectores en crecimiento', 'Escritores en crecimiento', 'Confianza en crecimiento', 'K–12 · Universidad · Adultos · ESL · Educación en casa', 'Donde cada estudiante florece a su propio ritmo'],
+      featuresTitle: <>Aprendizaje para <em>cada</em> etapa de la vida</>,
+      featuresSub: 'Desde kínder hasta la adultez — cada estudiante encuentra aquí su cosecha',
+      contactLocation: <>Yuma, Arizona<br />Sirviendo al área de Arizona</>,
+      footerTagline: <>Cada estudiante florece a su propio ritmo.<br />Aprendizaje tan único y vivo como tú.</>,
+      packageHeading: 'Descuentos por compromiso disponibles', packageTag: 'Paquetes especiales',
+      packageBullets: [
+        'Grupos pequeños: $30 por hora por persona.',
+        'Las tarifas familiares mantienen la tarifa inicial, con $5 de descuento para el segundo estudiante y cada estudiante adicional.',
+        'Los paquetes asincrónicos personalizados cuestan $250–$300 según el grado y la necesidad.',
+        'Los compromisos de seis y ocho semanas reciben 10% de descuento; los compromisos de doce semanas reciben 15% de descuento.',
+        'Se aplica una política de cancelación de 24 horas, con una tarifa de cancelación de la mitad de la tarifa estándar si no se cancela con 24 horas de anticipación.',
+      ],
+    },
+  } satisfies Record<Language, Record<string, unknown>>
+  const t = copy[language] as typeof copy.en
 
   function showPage(pageName: PageName) {
     setActivePage(pageName)
@@ -56,7 +100,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
                 aria-current={activePage === page ? 'page' : undefined}
                 onClick={(event) => { event.preventDefault(); showPage(page) }}
               >
-                {page === 'home' ? 'Home' : page === 'about' ? 'About' : 'Services'}
+                {page === 'home' ? t.home : page === 'about' ? t.about : t.services}
               </a>
             </li>
           ))}
@@ -68,10 +112,14 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
               aria-current={activePage === 'contact' ? 'page' : undefined}
               onClick={(event) => { event.preventDefault(); showPage('contact') }}
             >
-              Get Started
+              {t.getStarted}
             </a>
           </li>
         </ul>
+        <div className="language-toggle" role="group" aria-label="Switch site language">
+          <button type="button" className={language === 'en' ? 'active' : undefined} aria-pressed={language === 'en'} onClick={() => setLanguage('en')}>English</button>
+          <button type="button" className={language === 'es' ? 'active' : undefined} aria-pressed={language === 'es'} onClick={() => setLanguage('es')}>Español</button>
+        </div>
         <button
           className="mobile-menu-backdrop"
           type="button"
@@ -82,21 +130,21 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
         />
       </nav>
 
-      <main id="main-content">
+      <main id="main-content" lang={language}>
         {/* ===== HOME ===== */}
         <div className={`page ${activePage === 'home' ? 'active' : ''}`} id="page-home">
           <section className="hero" aria-labelledby="home-title">
             <div className="hero-left">
-              <div className="eyebrow">Tucson, Arizona</div>
+              <div className="eyebrow">{t.location}</div>
               <h1 className="hero-h1" id="home-title">
-                Where every<br />learner <em>blossoms</em><br />at their own pace
+                {t.heroTitle}
               </h1>
               <p className="hero-tagline">
-                Learning as unique and vivid as the saguaro blossom. Rooted in growth. Grounded in possibility.
+                {t.heroTagline}
               </p>
               <div className="hero-actions">
-                <button className="btn-primary" type="button" onClick={() => showPage('contact')}>Begin Your Journey</button>
-                <button className="btn-secondary" type="button" onClick={() => showPage('services')}>Explore Services</button>
+                <button className="btn-primary" type="button" onClick={() => showPage('contact')}>{t.begin}</button>
+                <button className="btn-secondary" type="button" onClick={() => showPage('services')}>{t.explore}</button>
               </div>
             </div>
             <div className="hero-right">
@@ -120,21 +168,18 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
           </section>
 
           <div className="tagline-strip" aria-label="Learning support focus areas">
-            <span className="tagline-strip-text">Nurturing readers</span>
-            <span className="tagline-strip-dot" aria-hidden="true"></span>
-            <span className="tagline-strip-text">Nurturing writers</span>
-            <span className="tagline-strip-dot" aria-hidden="true"></span>
-            <span className="tagline-strip-text">Nurturing confidence</span>
-            <span className="tagline-strip-dot" aria-hidden="true"></span>
-            <span className="tagline-strip-text">K–12 · College · Adult · ESL · Homeschool</span>
-            <span className="tagline-strip-dot" aria-hidden="true"></span>
-            <span className="tagline-strip-text">Donde cada estudiante florece</span>
+            {t.strip.map((item, index) => (
+              <span key={item} className="tagline-strip-group">
+                <span className="tagline-strip-text">{item}</span>
+                {index < t.strip.length - 1 && <span className="tagline-strip-dot" aria-hidden="true"></span>}
+              </span>
+            ))}
           </div>
 
           <section className="features" aria-labelledby="features-title">
             <div className="features-header">
-              <h2 className="section-title" id="features-title">Learning for <em>every</em> season of life</h2>
-              <p className="section-sub">From kindergarten to adulthood — every learner finds their harvest here</p>
+              <h2 className="section-title" id="features-title">{t.featuresTitle}</h2>
+              <p className="section-sub">{t.featuresSub}</p>
             </div>
             <div className="features-grid">
               <div className="feature-card">
@@ -306,9 +351,21 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
                 <p>English language, reading, writing, workplace communication, and confidence-building support.</p>
               </div>
               <div className="service-card">
-                <span className="service-tag">Packages</span>
-                <h3>Commitment discounts available</h3>
-                <p>Small groups are $30/hour per individual. Family rates keep the initial rate as stated, with additional members receiving $5 off for the second and subsequent learners. Customized asynchronous packages are $250–$300 depending on grade level and need. Six- and eight-week commitments receive 10% off; twelve-week commitments receive 15% off. A 24-hour cancellation policy applies, with a cancellation fee of ½ the standard rate for cancellations not made within 24 hours.</p>
+                <span className="service-tag">{t.packageTag}</span>
+                <h3>{t.packageHeading}</h3>
+                {language === 'en' ? (
+                  <ul className="service-list special-packages-list">
+                    <li>Small groups are $30/hour per individual.</li>
+                    <li>Family rates keep the initial rate as stated, with additional members receiving $5 off for the second and subsequent learners.</li>
+                    <li>Customized asynchronous packages are $250–$300 depending on grade level and need.</li>
+                    <li>Six- and eight-week commitments receive 10% off; twelve-week commitments receive 15% off.</li>
+                    <li>A 24-hour cancellation policy applies, with a cancellation fee of ½ the standard rate for cancellations not made within 24 hours.</li>
+                  </ul>
+                ) : (
+                  <ul className="service-list special-packages-list" aria-label="Paquetes especiales">
+                    {t.packageBullets.map((item) => <li key={item}>{item}</li>)}
+                  </ul>
+                )}
               </div>
             </div>
           </section>
@@ -328,7 +385,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
               <div className="contact-details">
                 <div className="contact-row">
                   <span className="contact-row-label">Location</span>
-                  <span className="contact-row-val">Tucson, Arizona<br />Serving the greater Arizona area</span>
+                  <span className="contact-row-val">{t.contactLocation}</span>
                 </div>
                 <div className="contact-row">
                   <span className="contact-row-label">Sessions</span>
@@ -397,11 +454,10 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
           <div className="footer-brand-name">Saguaro Blossoms</div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.25rem' }}>
             <div style={{ width: 28, height: 1.5, background: 'var(--gold)' }} aria-hidden="true"></div>
-            <span style={{ fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)' }}>Tucson, Arizona</span>
+            <span style={{ fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)' }}>Yuma, Arizona</span>
           </div>
           <div className="footer-brand-tagline">
-            Every learner blooms at their own pace.<br />
-            Learning as unique and vivid as you are.
+            {t.footerTagline}
           </div>
         </div>
         <div>
@@ -424,7 +480,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
         </div>
       </footer>
       <div className="footer-bottom">
-        <span className="footer-copy">© 2025 Saguaro Blossoms Learning. Tucson, Arizona.</span>
+        <span className="footer-copy">© 2025 Saguaro Blossoms Learning. Yuma, Arizona.</span>
         <span className="footer-bilingual">Donde cada estudiante florece.</span>
       </div>
     </>

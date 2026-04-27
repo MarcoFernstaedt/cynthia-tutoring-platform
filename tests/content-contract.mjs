@@ -94,6 +94,7 @@ for (const marker of [
   '@media (prefers-reduced-motion: reduce)',
 ]) requireIncludes(exactSite + css, marker)
 
+requireIncludes(layout, 'Yuma, Arizona')
 requireIncludes(layout, 'Saguaro Blossoms Learning')
 requireIncludes(layout, 'Learning as unique and vivid as the saguaro blossom')
 
@@ -120,6 +121,21 @@ for (const marker of [
   '$50/hour grades 9-college',
   'Family rates keep the initial rate as stated',
   '24-hour cancellation policy applies',
+  "const [language, setLanguage] = useState<Language>('en')",
+  "type Language = 'en' | 'es'",
+  'aria-label="Switch site language"',
+  'id="main-content" lang={language}',
+  'English',
+  'Español',
+  'Yuma, Arizona',
+  'Donde cada estudiante florece a su propio ritmo',
+  'Paquetes especiales',
+  '<ul className="service-list special-packages-list">',
+  '<li>Small groups are $30/hour per individual.</li>',
+  '<li>Family rates keep the initial rate as stated, with additional members receiving $5 off for the second and subsequent learners.</li>',
+  '<li>Customized asynchronous packages are $250–$300 depending on grade level and need.</li>',
+  '<li>Six- and eight-week commitments receive 10% off; twelve-week commitments receive 15% off.</li>',
+  '<li>A 24-hour cancellation policy applies, with a cancellation fee of ½ the standard rate for cancellations not made within 24 hours.</li>',
   'aria-labelledby="why-saguaro-title"',
   'aria-labelledby="pricing-title"',
 ]) requireIncludes(exactSite, marker)
