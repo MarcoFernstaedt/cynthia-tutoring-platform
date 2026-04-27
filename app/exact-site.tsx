@@ -163,11 +163,11 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
               <div className="eyebrow">Our Story</div>
               <h1 className="page-title" id="about-title">Rooted in growth.<br /><em>Grounded in possibility.</em></h1>
               <p className="about-body">
-                My education career began in elementary settings where I worked as both a paraprofessional and substitute teacher, building a foundational understanding of literacy development across ages and grade levels. After focusing on family, I returned to education and earned my teaching credentials and additional experience as a tutor and teacher before moving into higher education, where I continue to work as a professor of English.
+                My education career began in elementary settings where I worked as both a paraprofessional and substitute teacher, building a foundational understanding of literacy development across ages and grade levels. After focusing on family, I returned to education and earned my teaching credentials and adding additional experience as a tutor and a teacher before moving onto higher education where I continue to work as a professor of English.{'  '}My education and experience have worked to enable me to understand learners at every level which allows me to meet them where they are.
                 <br /><br />
-                My credentials include a bachelor’s degree and a master’s degree with a focus in English Studies from Arizona State University, graduate coursework in applied linguistics, and ongoing doctoral studies in English Literature. I also hold memberships in AZTESOL, AETA, NCTE/CCCC, TESOL, MLA, and GSOLE — professional organizations that keep me grounded in current research and best practices.
+                My credentials include a bachelor’s degree and a master’s degree with a focus in English Studies from Arizona State University, graduate coursework in applied linguistics, and ongoing doctoral studies in English Literature. In addition to continued learning through education and professional development, I hold memberships in AZTESOL, AETA, NCTE/CCCC, TESOL, MLA and GSOLE, which are all professional organizations that keep me grounded in current research and best practices.
                 <br /><br />
-                My work is driven by a student-centered philosophy rooted in building confidence, fostering holistic growth, and honoring each learner’s individual pace. Whether you’re working within a specific curriculum or need custom lessons, I adapt to what serves you best.
+                My experience and credentials have provided the foundation for my teaching philosophy.{'  '}My work is driven by a student-centered philosophy rooted in building confidence, fostering holistic growth, and honoring each learner’s individual pace. I bring experience working with learner’s who possess various needs and backgrounds, including those in exceptional educational settings. Whether you’re working within a specific curriculum or need me to design custom lessons, I adapt to what serves you best.{' '}
               </p>
             </div>
             <div className="value-stack">
@@ -187,29 +187,29 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
           </section>
 
           <section className="philosophy-section" aria-labelledby="why-saguaro-title">
-            <h2 className="section-title" id="why-saguaro-title" style={{ textAlign: 'center', marginBottom: '1.5rem' }}>Why Saguaro Blossoms?</h2>
+            <h2 className="section-title" id="why-saguaro-title" style={{ textAlign: 'center', marginBottom: '1.5rem' }}>Why Choose Saguaro Blooms</h2>
             <p className="section-sub" style={{ maxWidth: 920, margin: '0 auto 1rem', textAlign: 'center' }}>
-              I chose this name because the saguaro cactus embodies everything I believe about learning and growth. Unlike wildflowers that bloom quickly and fade, the saguaro takes time. It establishes deep roots, builds a strong structure, and develops resilience to withstand the desert’s challenges.
+              I chose this name because the saguaro cactus embodies everything I believe about learning and growth. Unlike wildflowers that I sow in my garden that bloom quickly and fade, the saguaro takes time. It establishes deep roots, upon which it builds a strong structure while developing resilience to withstand any challenge the desert brings. That steady, supported growth is what creates something truly lasting and beautiful.
             </p>
             <p className="section-sub" style={{ maxWidth: 920, margin: '0 auto 3rem', textAlign: 'center' }}>
-              Growth isn’t about speed, it’s about depth, resilience, and becoming stronger through process. Each learner’s journey is unique. Your pace is yours — and when you bloom, it will be rooted in something solid that will sustain you.
+              I see every learned the same way. There is potential and beauty in every student, at every stage of learning. Growth isn’t about speed, it’s about depth, resilience, and becoming stronger through process. Each learner’s journey is unique. Your pace is yours. And when you bloom, it will be rooted in something solid that will sustain you. Every learner bloom at their own pace is not simply a tagline but encompasses my philosophy.
             </p>
-            <h3 className="section-title" id="philosophy-title" style={{ textAlign: 'center', marginBottom: '3rem', fontSize: 'clamp(2rem, 5vw, 4rem)' }}>The seed <em>to harvest</em> philosophy</h3>
+            <h3 className="section-title" id="philosophy-title" style={{ textAlign: 'center', marginBottom: '3rem', fontSize: 'clamp(2rem, 5vw, 4rem)' }}>The seed&nbsp;to harvest&nbsp;philosophy</h3>
             <div className="philosophy-grid">
               <div className="philosophy-card">
                 <div className="philosophy-num">01</div>
                 <h3>Plant the seed</h3>
-                <p>Every learner begins somewhere. We meet them there — with patience, curiosity, and an individualized plan for growth.</p>
+                <p>Every learner begins somewhere. We meet them there — with patience, without judgment — and plant the seed of confidence and curiosity.</p>
               </div>
               <div className="philosophy-card">
                 <div className="philosophy-num">02</div>
                 <h3>Tend with care</h3>
-                <p>Growth is not linear. We nurture each learner through their individual challenges, celebrating every small bloom along the way.</p>
+                <p>Growth is not linear. We nurture each learner through their individual seasons — celebrating progress and navigating challenges together.</p>
               </div>
               <div className="philosophy-card">
                 <div className="philosophy-num">03</div>
                 <h3>Harvest the possibility</h3>
-                <p>The harvest looks different for every learner — a first full sentence, a confident essay, a new language bridge, or a voice finally heard.</p>
+                <p>The harvest looks different for every learner — a first chapter written, a voice found, a new language spoken with pride and confidence.</p>
               </div>
             </div>
           </section>
