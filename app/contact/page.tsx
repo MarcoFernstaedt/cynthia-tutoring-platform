@@ -1,37 +1,83 @@
-import { PageHero, Shell } from '@/components/site'
+import { Eyebrow, Shell } from '@/components/site'
 
 export default function ContactPage() {
   return (
-    <Shell>
-      <PageHero
-        eyebrow="Get started"
-        title="Your story matters. Let's grow it together."
-        intro="Whether you're a parent seeking support for your child, a homeschool family, a college student, or an adult learner — we'd love to hear from you. Every inquiry is answered personally."
-      />
-      <section className="grid gap-10 bg-[#FFFBF0] px-6 pb-20 md:grid-cols-[0.85fr_1.15fr] md:px-16">
-        <aside className="bg-[#0D0D0D] p-8 text-[#FFFBF0] md:p-10">
-          <p className="font-body text-xs uppercase tracking-[0.2em] text-[#F0C84A]">Begin your journey</p>
-          <h2 className="mt-4 font-display text-4xl">Saguaro Blossoms Learning</h2>
-          <p className="mt-5 text-[#FFFBF0]/75">Tucson, Arizona · In-person and virtual sessions available</p>
-          <div className="mt-10 space-y-5 text-sm text-[#FFFBF0]/80">
-            <p><span className="text-[#F0C84A]">Consultation:</span> $30 consultation</p>
-            <p><span className="text-[#F0C84A]">Includes:</span> informal discussion and a small formal assessment</p>
-            <p><span className="text-[#F0C84A]">Applies toward:</span> first session if services are chosen</p>
+    <Shell current="contact">
+      <div className="page active" id="page-contact">
+        <section className="contact-hero" aria-labelledby="contact-title">
+          <Eyebrow>Get in Touch</Eyebrow>
+          <h1 className="page-title" id="contact-title" aria-label="Your story matters. Let's grow it together.">Your story matters.<br /><em>Let&apos;s grow it together.</em></h1>
+        </section>
+
+        <section className="contact-body" aria-label="Contact Saguaro Blossoms">
+          <div className="contact-info">
+            <p className="contact-info-title">Begin your journey</p>
+            <p>Whether you&apos;re a parent seeking support for your child, a homeschool family, a college student, or an adult learner — we&apos;d love to hear from you. Every inquiry is answered personally and with care.</p>
+            <div className="contact-details">
+              <div className="contact-row">
+                <span className="contact-row-label">Location</span>
+                <span className="contact-row-val">Tucson, Arizona<br />Serving the greater Arizona area</span>
+              </div>
+              <div className="contact-row">
+                <span className="contact-row-label">Sessions</span>
+                <span className="contact-row-val">In-person &amp; virtual available</span>
+              </div>
+              <div className="contact-row">
+                <span className="contact-row-label">Response</span>
+                <span className="contact-row-val">Within 24–48 hours</span>
+              </div>
+            </div>
           </div>
-        </aside>
-        <form className="rounded-[2rem] border border-[#D4A017]/25 bg-white p-6 shadow-[0_24px_70px_rgba(13,13,13,0.08)] md:p-10">
-          <p className="mb-8 font-display text-3xl text-[#0D0D0D]">Tell us about your learning journey</p>
-          <div className="grid gap-5 md:grid-cols-2">
-            <label className="flex flex-col gap-2 text-sm text-[#3A3A3A]">First Name<input className="border border-[#D4A017]/30 bg-[#FFFBF0] px-4 py-3 outline-none focus:border-[#D4006A]" /></label>
-            <label className="flex flex-col gap-2 text-sm text-[#3A3A3A]">Last Name<input className="border border-[#D4A017]/30 bg-[#FFFBF0] px-4 py-3 outline-none focus:border-[#D4006A]" /></label>
-            <label className="flex flex-col gap-2 text-sm text-[#3A3A3A] md:col-span-2">Email Address<input type="email" className="border border-[#D4A017]/30 bg-[#FFFBF0] px-4 py-3 outline-none focus:border-[#D4006A]" /></label>
-            <label className="flex flex-col gap-2 text-sm text-[#3A3A3A]">I am a<select className="border border-[#D4A017]/30 bg-[#FFFBF0] px-4 py-3 outline-none focus:border-[#D4006A]"><option>Parent / Guardian</option><option>College Student</option><option>Adult Learner</option><option>Homeschool Family</option></select></label>
-            <label className="flex flex-col gap-2 text-sm text-[#3A3A3A]">Area of Interest<select className="border border-[#D4A017]/30 bg-[#FFFBF0] px-4 py-3 outline-none focus:border-[#D4006A]"><option>Reading Development</option><option>Writing & Expression</option><option>English as a Second Language</option><option>Homeschool Support</option><option>$30 consultation</option></select></label>
-            <label className="flex flex-col gap-2 text-sm text-[#3A3A3A] md:col-span-2">Share your story<textarea rows={5} className="border border-[#D4A017]/30 bg-[#FFFBF0] px-4 py-3 outline-none focus:border-[#D4006A]" /></label>
-          </div>
-          <button type="button" className="mt-8 w-full rounded-full bg-[#D4006A] px-8 py-4 font-body text-sm uppercase tracking-[0.12em] text-white transition hover:bg-[#E8008A]">Send My Inquiry</button>
-        </form>
-      </section>
+
+          <form className="contact-form-wrap" aria-labelledby="contact-form-title">
+            <p className="form-title" id="contact-form-title">Tell us about your learning journey</p>
+            <div className="form-row">
+              <div className="form-group">
+                <label className="form-label" htmlFor="first-name">First Name</label>
+                <input className="form-control" id="first-name" name="first-name" type="text" placeholder="Your first name" autoComplete="given-name" />
+              </div>
+              <div className="form-group">
+                <label className="form-label" htmlFor="last-name">Last Name</label>
+                <input className="form-control" id="last-name" name="last-name" type="text" placeholder="Your last name" autoComplete="family-name" />
+              </div>
+            </div>
+            <div className="form-group">
+              <label className="form-label" htmlFor="email">Email Address</label>
+              <input className="form-control" id="email" name="email" type="email" placeholder="your@email.com" autoComplete="email" />
+            </div>
+            <div className="form-group">
+              <label className="form-label" htmlFor="learner-type">I am a</label>
+              <select className="form-control" id="learner-type" name="learner-type" defaultValue="">
+                <option value="">Select one...</option>
+                <option>Parent seeking services for my child</option>
+                <option>Homeschool family</option>
+                <option>College student</option>
+                <option>Adult learner</option>
+                <option>ESL learner</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label className="form-label" htmlFor="interest">Area of Interest</label>
+              <select className="form-control" id="interest" name="interest" defaultValue="">
+                <option value="">Select one...</option>
+                <option>Reading development</option>
+                <option>Writing &amp; expression</option>
+                <option>English as a Second Language</option>
+                <option>Homeschool support</option>
+                <option>Multiple areas</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label className="form-label" htmlFor="story">Share your story</label>
+              <textarea className="form-control" id="story" name="story" placeholder="Tell us where you are and where you'd like to grow..." />
+            </div>
+            <button className="form-btn" type="submit">Send My Inquiry</button>
+            <p className="form-success" aria-live="polite">
+              Thank you for reaching out. We&apos;ll be in touch within 24–48 hours to begin your journey together.
+            </p>
+          </form>
+        </section>
+      </div>
     </Shell>
   )
 }
