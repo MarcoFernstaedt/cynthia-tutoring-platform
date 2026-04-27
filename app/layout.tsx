@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Saguaro Blossoms Learning Services',
-  description: 'Compassionate education support for K–12, college, adult learning, ESL, and homeschool families.',
+  title: 'Saguaro Blossoms Learning',
+  description: 'Saguaro Blossoms Learning supports readers, writers, ESL learners, homeschool families, college students, and adult learners in Tucson, Arizona.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
