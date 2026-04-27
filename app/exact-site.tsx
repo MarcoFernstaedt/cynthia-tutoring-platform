@@ -12,10 +12,12 @@ function cx(active: boolean) {
 export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage?: PageName }) {
   const [activePage, setActivePage] = useState<PageName>(initialPage)
   const [submitted, setSubmitted] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   function showPage(pageName: PageName) {
     setActivePage(pageName)
     setSubmitted(false)
+    setMenuOpen(false)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
@@ -32,7 +34,19 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
           <span className="nav-brand-dot" aria-hidden="true"></span>
           Saguaro Blossoms
         </a>
-        <ul className="nav-links">
+        <button
+          className="mobile-menu-toggle"
+          type="button"
+          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-controls="primary-nav-links"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+        <ul className="nav-links" id="primary-nav-links" data-open={menuOpen ? 'true' : 'false'}>
           {pages.slice(0, 3).map((page) => (
             <li key={page}>
               <a
@@ -58,6 +72,14 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
             </a>
           </li>
         </ul>
+        <button
+          className="mobile-menu-backdrop"
+          type="button"
+          aria-hidden="true"
+          tabIndex={-1}
+          data-open={menuOpen ? 'true' : 'false'}
+          onClick={() => setMenuOpen(false)}
+        />
       </nav>
 
       <main id="main-content">
