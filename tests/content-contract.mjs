@@ -138,7 +138,16 @@ for (const marker of [
   '<li>A 24-hour cancellation policy applies, with a cancellation fee of ½ the standard rate for cancellations not made within 24 hours.</li>',
   'aria-labelledby="why-saguaro-title"',
   'aria-labelledby="pricing-title"',
+  'Virtual sessions only',
+  'Solo sesiones virtuales',
+  'Online reading, writing, ESL, and homeschool support from Yuma, Arizona.',
+  'Apoyo virtual de lectura, escritura, ESL y educación en casa desde Yuma, Arizona.',
 ]) requireIncludes(exactSite, marker)
+
+for (const forbidden of ['In-person', 'in-person', 'in person', 'presencial', 'Presencial']) {
+  if (exactSite.includes(forbidden) || layout.includes(forbidden)) fail(`Virtual-only update still contains forbidden in-person wording: ${forbidden}`)
+}
+requireIncludes(layout, 'virtual tutoring services')
 requireIncludes(css, '.bloom-center-text { color: var(--dark); font-weight: 700; }', 'accessible bloom center text override')
 requireIncludes(css, 'outline: 3px solid var(--pink);', 'high-contrast visible focus outline')
 

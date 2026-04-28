@@ -25,7 +25,9 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
       strip: ['Nurturing readers', 'Nurturing writers', 'Nurturing confidence', 'K–12 · College · Adult · ESL · Homeschool', 'Donde cada estudiante florece'],
       featuresTitle: <>Learning for <em>every</em> season of life</>,
       featuresSub: 'From kindergarten to adulthood — every learner finds their harvest here',
-      contactLocation: <>Yuma, Arizona<br />Serving the greater Arizona area</>,
+      contactLocation: <>Yuma, Arizona<br />Virtual services available statewide</>,
+      virtualSummary: 'Online reading, writing, ESL, and homeschool support from Yuma, Arizona.',
+      sessionsLabel: 'Sessions', sessionsValue: 'Virtual sessions only',
       footerTagline: <>Every learner blooms at their own pace.<br />Learning as unique and vivid as you are.</>,
       packageHeading: 'Commitment discounts available', packageTag: 'Packages',
       packageBullets: [
@@ -44,7 +46,9 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
       strip: ['Lectores en crecimiento', 'Escritores en crecimiento', 'Confianza en crecimiento', 'K–12 · Universidad · Adultos · ESL · Educación en casa', 'Donde cada estudiante florece a su propio ritmo'],
       featuresTitle: <>Aprendizaje para <em>cada</em> etapa de la vida</>,
       featuresSub: 'Desde kínder hasta la adultez — cada estudiante encuentra aquí su cosecha',
-      contactLocation: <>Yuma, Arizona<br />Sirviendo al área de Arizona</>,
+      contactLocation: <>Yuma, Arizona<br />Servicios virtuales disponibles en todo Arizona</>,
+      virtualSummary: 'Apoyo virtual de lectura, escritura, ESL y educación en casa desde Yuma, Arizona.',
+      sessionsLabel: 'Sesiones', sessionsValue: 'Solo sesiones virtuales',
       footerTagline: <>Cada estudiante florece a su propio ritmo.<br />Aprendizaje tan único y vivo como tú.</>,
       packageHeading: 'Descuentos por compromiso disponibles', packageTag: 'Paquetes especiales',
       packageBullets: [
@@ -180,6 +184,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
             <div className="features-header">
               <h2 className="section-title" id="features-title">{t.featuresTitle}</h2>
               <p className="section-sub">{t.featuresSub}</p>
+              <p className="section-sub virtual-service-note">{t.virtualSummary}</p>
             </div>
             <div className="features-grid">
               <div className="feature-card">
@@ -388,8 +393,8 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
                   <span className="contact-row-val">{t.contactLocation}</span>
                 </div>
                 <div className="contact-row">
-                  <span className="contact-row-label">Sessions</span>
-                  <span className="contact-row-val">In-person &amp; virtual available</span>
+                  <span className="contact-row-label">{t.sessionsLabel}</span>
+                  <span className="contact-row-val">{t.sessionsValue}</span>
                 </div>
                 <div className="contact-row">
                   <span className="contact-row-label">Response</span>
