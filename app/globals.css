@@ -966,11 +966,6 @@
   font-size: 0.875rem;
 }
 .skip-link:focus { transform: translateY(0); outline: 3px solid var(--gold-light); outline-offset: 3px; }
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
-  outline: 3px solid var(--pink);
-  outline-offset: 4px;
-}
-.bloom-center-text { color: var(--dark); font-weight: 700; }
 button { font: inherit; }
 .mobile-menu-toggle, .mobile-menu-backdrop { display: none; }
 html, body { overflow-x: hidden; }

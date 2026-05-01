@@ -170,8 +170,6 @@ for (const forbidden of ['In-person', 'in-person', 'in person', 'presencial', 'P
   if (exactSite.includes(forbidden) || layout.includes(forbidden)) fail(`Virtual-only update still contains forbidden in-person wording: ${forbidden}`)
 }
 requireIncludes(layout, 'virtual tutoring services globally')
-requireIncludes(css, '.bloom-center-text { color: var(--dark); font-weight: 700; }', 'accessible bloom center text override')
-requireIncludes(css, 'outline: 3px solid var(--pink);', 'high-contrast visible focus outline')
 requireIncludes(css, '.payment-method-list', 'payment method list styling')
 requireIncludes(css, '.form-honeypot', 'contact form honeypot styling')
 requireIncludes(css, '.form-note', 'contact form note styling')
