@@ -90,6 +90,20 @@ for (const marker of [
   'aria-label="Primary navigation"',
   'aria-labelledby="home-title"',
   'htmlFor="first-name"',
+  'action="https://formsubmit.co/cyntiam417@gmail.com"',
+  'method="POST"',
+  'name="_subject"',
+  'name="_captcha" value="false"',
+  'name="_next" value="https://marcofernstaedt.github.io/cynthia-tutoring-platform/contact/?submitted=true"',
+  'name="_honey"',
+  'tabIndex={-1}',
+  'aria-hidden="true"',
+  'required />',
+  'required>',
+  'required></textarea>',
+  'const [formSubmitted, setFormSubmitted] = useState(',
+  'Thank you for reaching out. Your inquiry has been sent to Saguaro Blossoms Learning.',
+  'This form sends your inquiry directly to Saguaro Blossoms Learning by email.',
   '@media (max-width: 760px)',
   '@media (prefers-reduced-motion: reduce)',
 ]) requireIncludes(exactSite + css, marker)
@@ -152,12 +166,15 @@ for (const marker of [
   'Zelle',
 ]) requireIncludes(exactSite, marker)
 
-for (const forbidden of ['In-person', 'in-person', 'in person', 'presencial', 'Presencial', 'Virtual services available statewide', 'Servicios virtuales disponibles en todo Arizona']) {
+for (const forbidden of ['In-person', 'in-person', 'in person', 'presencial', 'Presencial', 'Virtual services available statewide', 'Servicios virtuales disponibles en todo Arizona', 'buy.stripe.com', 'paypal.com', 'square.link', 'apple-pay', 'Apple Pay button']) {
   if (exactSite.includes(forbidden) || layout.includes(forbidden)) fail(`Virtual-only update still contains forbidden in-person wording: ${forbidden}`)
 }
 requireIncludes(layout, 'virtual tutoring services globally')
 requireIncludes(css, '.bloom-center-text { color: var(--dark); font-weight: 700; }', 'accessible bloom center text override')
 requireIncludes(css, 'outline: 3px solid var(--pink);', 'high-contrast visible focus outline')
 requireIncludes(css, '.payment-method-list', 'payment method list styling')
+requireIncludes(css, '.form-honeypot', 'contact form honeypot styling')
+requireIncludes(css, '.form-note', 'contact form note styling')
+requireIncludes(css, '.contact-form-wrap .form-success', 'contact form visible success styling')
 
 console.log('exact attachment conversion contract passed')

@@ -1,6 +1,6 @@
 'use client'
 
-import { FormEvent, useState } from 'react'
+import { useState } from 'react'
 
 type PageName = 'home' | 'about' | 'services' | 'contact'
 type Language = 'en' | 'es'
@@ -13,7 +13,9 @@ function cx(active: boolean) {
 export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage?: PageName }) {
   const [activePage, setActivePage] = useState<PageName>(initialPage)
   const [language, setLanguage] = useState<Language>('en')
-  const [submitted, setSubmitted] = useState(false)
+  const [formSubmitted, setFormSubmitted] = useState(
+    () => typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('submitted') === 'true'
+  )
   const [menuOpen, setMenuOpen] = useState(false)
 
   const copy = {
@@ -72,14 +74,9 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
 
   function showPage(pageName: PageName) {
     setActivePage(pageName)
-    setSubmitted(false)
+    setFormSubmitted(false)
     setMenuOpen(false)
     window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
-  function submitForm(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setSubmitted(true)
   }
 
   return (
@@ -427,25 +424,35 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
               </div>
             </div>
 
-            <form className="contact-form-wrap" onSubmit={submitForm} aria-labelledby="contact-form-title">
+            <form
+              className="contact-form-wrap"
+              action="https://formsubmit.co/cyntiam417@gmail.com"
+              method="POST"
+              aria-labelledby="contact-form-title"
+            >
+              <input type="hidden" name="_subject" value="New Saguaro Blossoms Learning inquiry" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_next" value="https://marcofernstaedt.github.io/cynthia-tutoring-platform/contact/?submitted=true" />
+              <input type="text" name="_honey" className="form-honeypot" tabIndex={-1} autoComplete="off" aria-hidden="true" />
               <p className="form-title" id="contact-form-title">Tell us about your learning journey</p>
               <div className="form-row">
                 <div className="form-group">
                   <label className="form-label" htmlFor="first-name">First Name</label>
-                  <input className="form-control" id="first-name" name="first-name" type="text" placeholder="Your first name" autoComplete="given-name" />
+                  <input className="form-control" id="first-name" name="first-name" type="text" placeholder="Your first name" autoComplete="given-name" required />
                 </div>
                 <div className="form-group">
                   <label className="form-label" htmlFor="last-name">Last Name</label>
-                  <input className="form-control" id="last-name" name="last-name" type="text" placeholder="Your last name" autoComplete="family-name" />
+                  <input className="form-control" id="last-name" name="last-name" type="text" placeholder="Your last name" autoComplete="family-name" required />
                 </div>
               </div>
               <div className="form-group">
                 <label className="form-label" htmlFor="email">Email Address</label>
-                <input className="form-control" id="email" name="email" type="email" placeholder="your@email.com" autoComplete="email" />
+                <input className="form-control" id="email" name="email" type="email" placeholder="your@email.com" autoComplete="email" required />
               </div>
               <div className="form-group">
                 <label className="form-label" htmlFor="learner-type">I am a</label>
-                <select className="form-control" id="learner-type" name="learner-type" defaultValue="">
+                <select className="form-control" id="learner-type" name="learner-type" defaultValue="" required>
                   <option value="">Select one...</option>
                   <option>Parent seeking services for my child</option>
                   <option>Homeschool family</option>
@@ -456,7 +463,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
               </div>
               <div className="form-group">
                 <label className="form-label" htmlFor="interest">Area of Interest</label>
-                <select className="form-control" id="interest" name="interest" defaultValue="">
+                <select className="form-control" id="interest" name="interest" defaultValue="" required>
                   <option value="">Select one...</option>
                   <option>Reading development</option>
                   <option>Writing &amp; expression</option>
@@ -467,12 +474,15 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
               </div>
               <div className="form-group">
                 <label className="form-label" htmlFor="story">Share your story</label>
-                <textarea className="form-control" id="story" name="story" placeholder="Tell us where you are and where you'd like to grow..."></textarea>
+                <textarea className="form-control" id="story" name="story" placeholder="Tell us where you are and where you'd like to grow..." required></textarea>
               </div>
               <button className="form-btn" type="submit">Send My Inquiry</button>
-              <div className="form-success" id="success-msg" aria-live="polite" style={{ display: submitted ? 'block' : undefined }}>
-                Thank you for reaching out. We&apos;ll be in touch within 24–48 hours to begin your journey together.
-              </div>
+              {formSubmitted && (
+                <div className="form-success" id="success-msg" aria-live="polite">
+                  Thank you for reaching out. Your inquiry has been sent to Saguaro Blossoms Learning.
+                </div>
+              )}
+              <p className="form-note">This form sends your inquiry directly to Saguaro Blossoms Learning by email.</p>
             </form>
           </section>
         </div>
