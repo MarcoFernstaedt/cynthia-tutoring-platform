@@ -94,14 +94,14 @@ for (const marker of [
   'method="POST"',
   'name="_subject"',
   'name="_captcha" value="false"',
-  'name="_next" value="https://marcofernstaedt.github.io/cynthia-tutoring-platform/contact/?submitted=true"',
+  'name="_next" value="https://marcofernstaedt.github.io/cynthia-tutoring-platform/contact/#success-msg"',
   'name="_honey"',
   'tabIndex={-1}',
   'aria-hidden="true"',
   'required />',
   'required>',
   'required></textarea>',
-  'const formSubmitted = typeof window',
+  'const [language, setLanguage] = useState<Language>(\'en\')',
   'Thank you for reaching out. Your inquiry has been sent to Saguaro Blossoms Learning.',
   'This form sends your inquiry directly to Saguaro Blossoms Learning by email.',
   '@media (max-width: 760px)',
@@ -175,6 +175,6 @@ requireIncludes(css, 'outline: 3px solid var(--pink);', 'high-contrast visible f
 requireIncludes(css, '.payment-method-list', 'payment method list styling')
 requireIncludes(css, '.form-honeypot', 'contact form honeypot styling')
 requireIncludes(css, '.form-note', 'contact form note styling')
-requireIncludes(css, '.contact-form-wrap .form-success', 'contact form visible success styling')
+requireIncludes(css, '.contact-form-wrap .form-success:target', 'contact form visible success styling')
 
 console.log('exact attachment conversion contract passed')

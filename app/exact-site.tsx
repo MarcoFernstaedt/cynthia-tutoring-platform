@@ -14,7 +14,6 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
   const [activePage, setActivePage] = useState<PageName>(initialPage)
   const [language, setLanguage] = useState<Language>('en')
   const [menuOpen, setMenuOpen] = useState(false)
-  const formSubmitted = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('submitted') === 'true'
 
   const copy = {
     en: {
@@ -430,7 +429,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
               <input type="hidden" name="_subject" value="New Saguaro Blossoms Learning inquiry" />
               <input type="hidden" name="_template" value="table" />
               <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_next" value="https://marcofernstaedt.github.io/cynthia-tutoring-platform/contact/?submitted=true" />
+              <input type="hidden" name="_next" value="https://marcofernstaedt.github.io/cynthia-tutoring-platform/contact/#success-msg" />
               <input type="text" name="_honey" className="form-honeypot" tabIndex={-1} autoComplete="off" aria-hidden="true" />
               <p className="form-title" id="contact-form-title">Tell us about your learning journey</p>
               <div className="form-row">
@@ -474,11 +473,9 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
                 <textarea className="form-control" id="story" name="story" placeholder="Tell us where you are and where you'd like to grow..." required></textarea>
               </div>
               <button className="form-btn" type="submit">Send My Inquiry</button>
-              {formSubmitted && (
-                <div className="form-success" id="success-msg" aria-live="polite">
-                  Thank you for reaching out. Your inquiry has been sent to Saguaro Blossoms Learning.
-                </div>
-              )}
+              <div className="form-success" id="success-msg" aria-live="polite">
+                Thank you for reaching out. Your inquiry has been sent to Saguaro Blossoms Learning.
+              </div>
               <p className="form-note">This form sends your inquiry directly to Saguaro Blossoms Learning by email.</p>
             </form>
           </section>
