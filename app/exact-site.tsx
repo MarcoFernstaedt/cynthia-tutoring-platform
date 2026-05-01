@@ -25,9 +25,13 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
       strip: ['Nurturing readers', 'Nurturing writers', 'Nurturing confidence', 'K–12 · College · Adult · ESL · Homeschool', 'Donde cada estudiante florece'],
       featuresTitle: <>Learning for <em>every</em> season of life</>,
       featuresSub: 'From kindergarten to adulthood — every learner finds their harvest here',
-      contactLocation: <>Yuma, Arizona<br />Virtual services available statewide</>,
-      virtualSummary: 'Online reading, writing, ESL, and homeschool support from Yuma, Arizona.',
+      contactLocation: <>Yuma, Arizona<br />Virtual services available globally</>,
+      virtualSummary: 'Online reading, writing, ESL, and homeschool support from Yuma, Arizona, with virtual services available globally.',
       sessionsLabel: 'Sessions', sessionsValue: 'Virtual sessions only',
+      serviceAreaLabel: 'Service area', serviceAreaValue: 'Virtual services available globally',
+      paymentHeading: 'Payment types accepted', paymentTag: 'Payments',
+      paymentIntro: 'Payment is currently accepted through AZ ESA funds, CashApp, Venmo, and Zelle.',
+      paymentMethods: ['AZ ESA funds', 'CashApp', 'Venmo', 'Zelle'],
       footerTagline: <>Every learner blooms at their own pace.<br />Learning as unique and vivid as you are.</>,
       packageHeading: 'Commitment discounts available', packageTag: 'Packages',
       packageBullets: [
@@ -46,9 +50,13 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
       strip: ['Lectores en crecimiento', 'Escritores en crecimiento', 'Confianza en crecimiento', 'K–12 · Universidad · Adultos · ESL · Educación en casa', 'Donde cada estudiante florece a su propio ritmo'],
       featuresTitle: <>Aprendizaje para <em>cada</em> etapa de la vida</>,
       featuresSub: 'Desde kínder hasta la adultez — cada estudiante encuentra aquí su cosecha',
-      contactLocation: <>Yuma, Arizona<br />Servicios virtuales disponibles en todo Arizona</>,
-      virtualSummary: 'Apoyo virtual de lectura, escritura, ESL y educación en casa desde Yuma, Arizona.',
+      contactLocation: <>Yuma, Arizona<br />Servicios virtuales disponibles globalmente</>,
+      virtualSummary: 'Apoyo virtual de lectura, escritura, ESL y educación en casa desde Yuma, Arizona, con servicios virtuales disponibles globalmente.',
       sessionsLabel: 'Sesiones', sessionsValue: 'Solo sesiones virtuales',
+      serviceAreaLabel: 'Área de servicio', serviceAreaValue: 'Servicios virtuales disponibles globalmente',
+      paymentHeading: 'Tipos de pago aceptados', paymentTag: 'Pagos',
+      paymentIntro: 'Actualmente se acepta pago por fondos AZ ESA, CashApp, Venmo y Zelle.',
+      paymentMethods: ['Fondos AZ ESA', 'CashApp', 'Venmo', 'Zelle'],
       footerTagline: <>Cada estudiante florece a su propio ritmo.<br />Aprendizaje tan único y vivo como tú.</>,
       packageHeading: 'Descuentos por compromiso disponibles', packageTag: 'Paquetes especiales',
       packageBullets: [
@@ -372,6 +380,14 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
                   </ul>
                 )}
               </div>
+              <div className="service-card payment-card">
+                <span className="service-tag">{t.paymentTag}</span>
+                <h3>{t.paymentHeading}</h3>
+                <p>{t.paymentIntro}</p>
+                <ul className="service-list payment-method-list" aria-label={language === 'en' ? 'Accepted payment methods' : 'Métodos de pago aceptados'}>
+                  {t.paymentMethods.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </div>
             </div>
           </section>
         </div>
@@ -395,6 +411,14 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
                 <div className="contact-row">
                   <span className="contact-row-label">{t.sessionsLabel}</span>
                   <span className="contact-row-val">{t.sessionsValue}</span>
+                </div>
+                <div className="contact-row">
+                  <span className="contact-row-label">{t.serviceAreaLabel}</span>
+                  <span className="contact-row-val">{t.serviceAreaValue}</span>
+                </div>
+                <div className="contact-row">
+                  <span className="contact-row-label">{t.paymentTag}</span>
+                  <span className="contact-row-val">{language === 'en' ? 'AZ ESA, CashApp, Venmo, Zelle' : 'Fondos AZ ESA, CashApp, Venmo, Zelle'}</span>
                 </div>
                 <div className="contact-row">
                   <span className="contact-row-label">Response</span>

@@ -1003,6 +1003,15 @@ img, svg, canvas, video { max-width: 100%; }
 }
 .tagline-strip-group { display: contents; }
 .special-packages-list { margin-top: 0.75rem; }
+.payment-card {
+  border-top-color: var(--gold-light);
+}
+.payment-method-list {
+  margin-top: 0.85rem;
+}
+.payment-method-list li::marker {
+  color: var(--pink);
+}
 
 @media (max-width: 1100px) {
   nav { padding: 0 2rem; }

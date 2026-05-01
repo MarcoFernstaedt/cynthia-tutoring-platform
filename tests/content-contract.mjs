@@ -140,15 +140,24 @@ for (const marker of [
   'aria-labelledby="pricing-title"',
   'Virtual sessions only',
   'Solo sesiones virtuales',
-  'Online reading, writing, ESL, and homeschool support from Yuma, Arizona.',
-  'Apoyo virtual de lectura, escritura, ESL y educación en casa desde Yuma, Arizona.',
+  'Online reading, writing, ESL, and homeschool support from Yuma, Arizona, with virtual services available globally.',
+  'Apoyo virtual de lectura, escritura, ESL y educación en casa desde Yuma, Arizona, con servicios virtuales disponibles globalmente.',
+  'Virtual services available globally',
+  'Servicios virtuales disponibles globalmente',
+  'Payment types accepted',
+  'Payment is currently accepted through AZ ESA funds, CashApp, Venmo, and Zelle.',
+  'AZ ESA funds',
+  'CashApp',
+  'Venmo',
+  'Zelle',
 ]) requireIncludes(exactSite, marker)
 
-for (const forbidden of ['In-person', 'in-person', 'in person', 'presencial', 'Presencial']) {
+for (const forbidden of ['In-person', 'in-person', 'in person', 'presencial', 'Presencial', 'Virtual services available statewide', 'Servicios virtuales disponibles en todo Arizona']) {
   if (exactSite.includes(forbidden) || layout.includes(forbidden)) fail(`Virtual-only update still contains forbidden in-person wording: ${forbidden}`)
 }
-requireIncludes(layout, 'virtual tutoring services')
+requireIncludes(layout, 'virtual tutoring services globally')
 requireIncludes(css, '.bloom-center-text { color: var(--dark); font-weight: 700; }', 'accessible bloom center text override')
 requireIncludes(css, 'outline: 3px solid var(--pink);', 'high-contrast visible focus outline')
+requireIncludes(css, '.payment-method-list', 'payment method list styling')
 
 console.log('exact attachment conversion contract passed')
