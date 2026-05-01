@@ -13,10 +13,8 @@ function cx(active: boolean) {
 export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage?: PageName }) {
   const [activePage, setActivePage] = useState<PageName>(initialPage)
   const [language, setLanguage] = useState<Language>('en')
-  const [formSubmitted, setFormSubmitted] = useState(
-    () => typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('submitted') === 'true'
-  )
   const [menuOpen, setMenuOpen] = useState(false)
+  const formSubmitted = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('submitted') === 'true'
 
   const copy = {
     en: {
@@ -74,7 +72,6 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
 
   function showPage(pageName: PageName) {
     setActivePage(pageName)
-    setFormSubmitted(false)
     setMenuOpen(false)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }

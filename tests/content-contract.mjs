@@ -101,7 +101,7 @@ for (const marker of [
   'required />',
   'required>',
   'required></textarea>',
-  'const [formSubmitted, setFormSubmitted] = useState(',
+  'const formSubmitted = typeof window',
   'Thank you for reaching out. Your inquiry has been sent to Saguaro Blossoms Learning.',
   'This form sends your inquiry directly to Saguaro Blossoms Learning by email.',
   '@media (max-width: 760px)',
