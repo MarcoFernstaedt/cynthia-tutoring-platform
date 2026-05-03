@@ -13,6 +13,9 @@ const exactSite = read('app/exact-site.tsx')
 const combinedPages = page + exactSite + read('app/about/page.tsx') + read('app/services/page.tsx') + read('app/contact/page.tsx')
 const css = read('app/globals.css')
 const layout = read('app/layout.tsx')
+const contactApi = read('app/api/contact/route.ts')
+const nextConfig = read('next.config.mjs')
+const packageJson = read('package.json')
 
 function fail(message) {
   console.error(message)
@@ -90,11 +93,9 @@ for (const marker of [
   'aria-label="Primary navigation"',
   'aria-labelledby="home-title"',
   'htmlFor="first-name"',
-  'action="https://formsubmit.co/cyntiam417@gmail.com"',
+  'action="/api/contact"',
   'method="POST"',
   'name="_subject"',
-  'name="_captcha" value="false"',
-  'name="_next" value="https://marcofernstaedt.github.io/cynthia-tutoring-platform/contact/#success-msg"',
   'name="_honey"',
   'tabIndex={-1}',
   'aria-hidden="true"',
@@ -111,6 +112,18 @@ for (const marker of [
 requireIncludes(layout, 'Yuma, Arizona')
 requireIncludes(layout, 'Saguaro Blossoms Learning')
 requireIncludes(layout, 'Learning as unique and vivid as the saguaro blossom')
+requireIncludes(packageJson, '"@vercel/analytics"', 'Vercel Analytics dependency')
+requireIncludes(layout, "import { Analytics } from '@vercel/analytics/next'", 'Vercel Analytics layout import')
+requireIncludes(layout, '<Analytics />', 'Vercel Analytics component')
+
+for (const marker of [
+  "import { track } from '@vercel/analytics'",
+  "track('language_switch'",
+  "track('consultation_cta_click'",
+  "track('services_cta_click'",
+  "track('contact_form_submit'",
+  "track('pricing_package_view'",
+]) requireIncludes(exactSite, marker)
 
 // Cynthia feedback from 2026-04-27: restore her About blurb, Why Saguaro
 // Blossoms rationale, and refined pricing while keeping the site accessible.
@@ -174,5 +187,23 @@ requireIncludes(css, '.payment-method-list', 'payment method list styling')
 requireIncludes(css, '.form-honeypot', 'contact form honeypot styling')
 requireIncludes(css, '.form-note', 'contact form note styling')
 requireIncludes(css, '.contact-form-wrap .form-success:target', 'contact form visible success styling')
+
+for (const marker of [
+  'export const runtime = \'nodejs\'',
+  'process.env.RESEND_API_KEY',
+  'process.env.CONTACT_TO_EMAIL',
+  'process.env.CONTACT_FROM_EMAIL',
+  'await request.formData()',
+  'form.get(\'_honey\')',
+  'first-name',
+  'last-name',
+  'learner-type',
+  'New Saguaro Blossoms Learning inquiry',
+  'https://api.resend.com/emails',
+  'NextResponse.redirect(new URL(\'/contact/#success-msg\'',
+]) requireIncludes(contactApi, marker)
+
+requireIncludes(nextConfig, "...(isGithubPages ? { output: 'export'", 'GitHub Pages export only when requested')
+if (nextConfig.includes("output: 'export',\n  trailingSlash")) fail('Next config exports unconditionally, which prevents API routes on Vercel')
 
 console.log('exact attachment conversion contract passed')

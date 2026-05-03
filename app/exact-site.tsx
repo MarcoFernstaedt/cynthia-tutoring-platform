@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { track } from '@vercel/analytics'
 
 type PageName = 'home' | 'about' | 'services' | 'contact'
 type Language = 'en' | 'es'
@@ -75,6 +76,22 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  function switchLanguage(nextLanguage: Language) {
+    track('language_switch', { language: nextLanguage })
+    setLanguage(nextLanguage)
+  }
+
+  function startConsultation(source: string) {
+    track('consultation_cta_click', { source })
+    showPage('contact')
+  }
+
+  function viewServices(source: string) {
+    track('services_cta_click', { source })
+    track('pricing_package_view', { source })
+    showPage('services')
+  }
+
   return (
     <>
       <a className="skip-link" href="#main-content">Skip to main content</a>
@@ -122,8 +139,8 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
           </li>
         </ul>
         <div className="language-toggle" role="group" aria-label="Switch site language">
-          <button type="button" className={language === 'en' ? 'active' : undefined} aria-pressed={language === 'en'} onClick={() => setLanguage('en')}>English</button>
-          <button type="button" className={language === 'es' ? 'active' : undefined} aria-pressed={language === 'es'} onClick={() => setLanguage('es')}>Español</button>
+          <button type="button" className={language === 'en' ? 'active' : undefined} aria-pressed={language === 'en'} onClick={() => switchLanguage('en')}>English</button>
+          <button type="button" className={language === 'es' ? 'active' : undefined} aria-pressed={language === 'es'} onClick={() => switchLanguage('es')}>Español</button>
         </div>
         <button
           className="mobile-menu-backdrop"
@@ -148,8 +165,8 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
                 {t.heroTagline}
               </p>
               <div className="hero-actions">
-                <button className="btn-primary" type="button" onClick={() => showPage('contact')}>{t.begin}</button>
-                <button className="btn-secondary" type="button" onClick={() => showPage('services')}>{t.explore}</button>
+                <button className="btn-primary" type="button" onClick={() => startConsultation('hero')}>{t.begin}</button>
+                <button className="btn-secondary" type="button" onClick={() => viewServices('hero')}>{t.explore}</button>
               </div>
             </div>
             <div className="hero-right">
@@ -422,14 +439,12 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
 
             <form
               className="contact-form-wrap"
-              action="https://formsubmit.co/cyntiam417@gmail.com"
+              action="/api/contact"
               method="POST"
               aria-labelledby="contact-form-title"
+              onSubmit={() => track('contact_form_submit', { source: 'contact_form' })}
             >
               <input type="hidden" name="_subject" value="New Saguaro Blossoms Learning inquiry" />
-              <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_next" value="https://marcofernstaedt.github.io/cynthia-tutoring-platform/contact/#success-msg" />
               <input type="text" name="_honey" className="form-honeypot" tabIndex={-1} autoComplete="off" aria-hidden="true" />
               <p className="form-title" id="contact-form-title">Tell us about your learning journey</p>
               <div className="form-row">
