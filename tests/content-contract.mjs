@@ -187,6 +187,8 @@ requireIncludes(css, '.payment-method-list', 'payment method list styling')
 requireIncludes(css, '.form-honeypot', 'contact form honeypot styling')
 requireIncludes(css, '.form-note', 'contact form note styling')
 requireIncludes(css, '.contact-form-wrap .form-success:target', 'contact form visible success styling')
+requireIncludes(css, 'overscroll-behavior-y: none', 'overscroll bounce prevention')
+requireIncludes(css, 'overflow-x: hidden', 'horizontal overscroll prevention')
 
 for (const marker of [
   'export const runtime = \'nodejs\'',
