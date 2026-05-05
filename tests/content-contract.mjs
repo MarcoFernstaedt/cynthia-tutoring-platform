@@ -79,6 +79,8 @@ requireIncludes(exactSite, 'aria-hidden="true"', 'website decorative flower hidd
 requireIncludes(exactSite, "import Image from 'next/image'", 'website SVG uses Next Image')
 requireIncludes(nextConfig, 'NEXT_PUBLIC_SITE_BASE_PATH', 'GitHub Pages SVG asset base path env')
 requireIncludes(css, 'margin: 0 auto 2rem;', 'website flower preserves spacing before quote')
+requireIncludes(css, 'transform: translateX(-72px);', 'website flower shifted left in hero')
+requireIncludes(css, 'width: min(100%, 320px);', 'website flower uses wider organic SVG sizing')
 requireIncludes(exactSite, 'className="tagline-strip"', 'exact tagline strip class')
 requireIncludes(exactSite, 'showPage(\'contact\')', 'contact navigation conversion')
 if (combinedPages.includes('from \'@/components/site\'') || combinedPages.includes('from "@/components/site"')) {
@@ -333,11 +335,12 @@ for (const marker of [
 
 for (const marker of [
   '<svg',
-  'viewBox="0 0 280 280"',
+  'viewBox="0 0 320 280"',
   'Decorative Saguaro Blossoms flower',
-  'rotate(45 140 140)',
-  'rotate(315 140 140)',
-  'width="80" height="120"',
+  '<path id="long-petal"',
+  '<path id="short-petal"',
+  'rotate(45 160 140)',
+  'rotate(315 160 140)',
   'fill="#D4006A"',
   'fill="#E8008A"',
   'fill="#D4A017"',

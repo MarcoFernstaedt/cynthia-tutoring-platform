@@ -1172,16 +1172,24 @@ body::-webkit-scrollbar {
   .footer-bottom { padding-left: 1.25rem; padding-right: 1.25rem; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
 }
 
-/* SVG flower mark shared with contact emails */
+/* SVG flower mark used in the hero. */
+.bloom-art {
+  transform: translateX(-72px);
+}
+
 .bloom-svg-mark {
   display: block;
-  width: min(100%, 280px);
+  width: min(100%, 320px);
   height: auto;
   margin: 0 auto 2rem;
   filter: drop-shadow(0 18px 35px rgba(212, 0, 106, 0.18));
 }
 
 @media (max-width: 760px) {
+  .bloom-art {
+    transform: none;
+  }
+
   .bloom-svg-mark {
     width: min(100%, 235px);
   }
