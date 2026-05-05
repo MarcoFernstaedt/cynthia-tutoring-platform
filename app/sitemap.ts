@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteUrl}/adult-learning/`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
     { url: `${siteUrl}/college-student-support/`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
     { url: `${siteUrl}/az-esa-tutoring/`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
-    { url: `${siteUrl}/yuma-tutoring/`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
+    { url: `${siteUrl}/tucson-tutoring/`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
     { url: `${siteUrl}/virtual-tutoring/`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
   ]
 }

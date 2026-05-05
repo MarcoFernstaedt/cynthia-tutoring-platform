@@ -24,14 +24,14 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
   const copy = {
     en: {
       home: 'Home', about: 'About', services: 'Services', getStarted: 'Get Started',
-      location: 'Yuma, Arizona', heroTitle: <>Where every<br />learner <em>blossoms</em><br />at their own pace</>,
+      location: 'Tucson, Arizona', heroTitle: <>Where every<br />learner <em>blossoms</em><br />at their own pace</>,
       heroTagline: 'Learning as unique and vivid as the saguaro blossom. Rooted in growth. Grounded in possibility.',
       begin: 'Begin Your Journey', explore: 'Explore Services',
       strip: ['Nurturing readers', 'Nurturing writers', 'Nurturing confidence', 'K–12 · College · Adult · ESL · Homeschool', 'Donde cada estudiante florece'],
       featuresTitle: <>Learning for <em>every</em> season of life</>,
       featuresSub: 'From kindergarten to adulthood — every learner finds their harvest here',
-      contactLocation: <>Yuma, Arizona<br />Virtual services available globally</>,
-      virtualSummary: 'Online reading, writing, ESL, and homeschool support from Yuma, Arizona, with virtual services available globally.',
+      contactLocation: <>Tucson, Arizona<br />Virtual services available globally</>,
+      virtualSummary: 'Online reading, writing, ESL, and homeschool support from Tucson, Arizona, with virtual services available globally.',
       sessionsLabel: 'Sessions', sessionsValue: 'Virtual sessions only',
       serviceAreaLabel: 'Service area', serviceAreaValue: 'Virtual services available globally',
       paymentHeading: 'Payment types accepted', paymentTag: 'Payments',
@@ -48,18 +48,18 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
       ],
       seoHeading: 'Online tutoring for reading, writing, ESL, and homeschool support',
       seoBody: "Saguaro Blossoms Learning provides virtual tutoring for K-12 students, homeschool families, college students, adult learners, and English language learners. Sessions focus on reading development, writing confidence, language arts, academic writing, ESL fluency, and individualized support rooted in each learner's pace.",
-      seoPoints: ['Virtual sessions only', 'Based in Yuma, Arizona', 'Online tutoring available globally', 'AZ ESA funds accepted'],
+      seoPoints: ['Virtual sessions only', 'Based in Tucson, Arizona', 'Online tutoring available globally', 'AZ ESA funds accepted'],
     },
     es: {
       home: 'Inicio', about: 'Acerca de', services: 'Servicios', getStarted: 'Comenzar',
-      location: 'Yuma, Arizona', heroTitle: <>Donde cada<br />estudiante <em>florece</em><br />a su propio ritmo</>,
+      location: 'Tucson, Arizona', heroTitle: <>Donde cada<br />estudiante <em>florece</em><br />a su propio ritmo</>,
       heroTagline: 'Aprendizaje tan único y vivo como la flor del saguaro. Con raíces en el crecimiento y basado en la posibilidad.',
       begin: 'Comienza tu camino', explore: 'Explorar servicios',
       strip: ['Lectores en crecimiento', 'Escritores en crecimiento', 'Confianza en crecimiento', 'K–12 · Universidad · Adultos · ESL · Educación en casa', 'Donde cada estudiante florece a su propio ritmo'],
       featuresTitle: <>Aprendizaje para <em>cada</em> etapa de la vida</>,
       featuresSub: 'Desde kínder hasta la adultez — cada estudiante encuentra aquí su cosecha',
-      contactLocation: <>Yuma, Arizona<br />Servicios virtuales disponibles globalmente</>,
-      virtualSummary: 'Apoyo virtual de lectura, escritura, ESL y educación en casa desde Yuma, Arizona, con servicios virtuales disponibles globalmente.',
+      contactLocation: <>Tucson, Arizona<br />Servicios virtuales disponibles globalmente</>,
+      virtualSummary: 'Apoyo virtual de lectura, escritura, ESL y educación en casa desde Tucson, Arizona, con servicios virtuales disponibles globalmente.',
       sessionsLabel: 'Sesiones', sessionsValue: 'Solo sesiones virtuales',
       serviceAreaLabel: 'Área de servicio', serviceAreaValue: 'Servicios virtuales disponibles globalmente',
       paymentHeading: 'Tipos de pago aceptados', paymentTag: 'Pagos',
@@ -76,7 +76,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
       ],
       seoHeading: 'Tutoría virtual de lectura, escritura, ESL y apoyo para educación en casa',
       seoBody: 'Saguaro Blossoms Learning ofrece tutoría virtual para estudiantes K-12, familias de educación en casa, universitarios, adultos y estudiantes de inglés. Las sesiones apoyan lectura, escritura, artes del lenguaje, escritura académica, fluidez en inglés y aprendizaje individualizado al ritmo de cada estudiante.',
-      seoPoints: ['Solo sesiones virtuales', 'Con base en Yuma, Arizona', 'Tutoría en línea disponible globalmente', 'Se aceptan fondos AZ ESA'],
+      seoPoints: ['Solo sesiones virtuales', 'Con base en Tucson, Arizona', 'Tutoría en línea disponible globalmente', 'Se aceptan fondos AZ ESA'],
     },
   } satisfies Record<Language, Record<string, unknown>>
   const t = copy[language] as typeof copy.en
@@ -255,7 +255,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
                 <Link href="/esl-tutoring/">ESL tutoring</Link>
                 <Link href="/homeschool-support/">Homeschool support</Link>
                 <Link href="/az-esa-tutoring/">AZ ESA tutoring</Link>
-                <Link href="/yuma-tutoring/">Yuma tutoring</Link>
+                <Link href="/tucson-tutoring/">Tucson tutoring</Link>
               </div>
             </div>
           </section>
@@ -266,7 +266,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
             <div className="faq-grid">
               <article>
                 <h3>Does Saguaro Blossoms Learning offer virtual tutoring?</h3>
-                <p>Yes. Saguaro Blossoms Learning provides virtual sessions only, with online tutoring available globally from Yuma, Arizona.</p>
+                <p>Yes. Saguaro Blossoms Learning provides virtual sessions only, with online tutoring available globally from Tucson, Arizona.</p>
               </article>
               <article>
                 <h3>What subjects does Saguaro Blossoms Learning support?</h3>
@@ -571,7 +571,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
           <div className="footer-brand-name">Saguaro Blossoms</div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.25rem' }}>
             <div style={{ width: 28, height: 1.5, background: 'var(--gold)' }} aria-hidden="true"></div>
-            <span style={{ fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)' }}>Yuma, Arizona</span>
+            <span style={{ fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)' }}>Tucson, Arizona</span>
           </div>
           <div className="footer-brand-tagline">
             {t.footerTagline}
@@ -594,12 +594,12 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
             <li><Link href="/esl-tutoring/">ESL Support</Link></li>
             <li><Link href="/homeschool-support/">Homeschool Support</Link></li>
             <li><Link href="/az-esa-tutoring/">AZ ESA Tutoring</Link></li>
-            <li><Link href="/yuma-tutoring/">Yuma Tutoring</Link></li>
+            <li><Link href="/tucson-tutoring/">Tucson Tutoring</Link></li>
           </ul>
         </div>
       </footer>
       <div className="footer-bottom">
-        <span className="footer-copy">© 2025 Saguaro Blossoms Learning. Yuma, Arizona.</span>
+        <span className="footer-copy">© 2025 Saguaro Blossoms Learning. Tucson, Arizona.</span>
         <span className="footer-bilingual">Donde cada estudiante florece.</span>
       </div>
     </>

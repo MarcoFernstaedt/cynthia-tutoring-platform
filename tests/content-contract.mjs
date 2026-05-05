@@ -112,7 +112,7 @@ for (const marker of [
   '@media (prefers-reduced-motion: reduce)',
 ]) requireIncludes(exactSite + css, marker)
 
-requireIncludes(layout + seo, 'Yuma, Arizona')
+requireIncludes(layout + seo, 'Tucson, Arizona')
 requireIncludes(layout + seo, 'Saguaro Blossoms Learning')
 requireIncludes(layout + seo, 'Learning as unique and vivid as the saguaro blossom')
 requireIncludes(packageJson, '"@vercel/analytics"', 'Vercel Analytics dependency')
@@ -204,7 +204,7 @@ for (const marker of [
   'id="main-content" lang={language}',
   'English',
   'Español',
-  'Yuma, Arizona',
+  'Tucson, Arizona',
   'Donde cada estudiante florece a su propio ritmo',
   'Paquetes especiales',
   '<ul className="service-list special-packages-list">',
@@ -217,8 +217,8 @@ for (const marker of [
   'aria-labelledby="pricing-title"',
   'Virtual sessions only',
   'Solo sesiones virtuales',
-  'Online reading, writing, ESL, and homeschool support from Yuma, Arizona, with virtual services available globally.',
-  'Apoyo virtual de lectura, escritura, ESL y educación en casa desde Yuma, Arizona, con servicios virtuales disponibles globalmente.',
+  'Online reading, writing, ESL, and homeschool support from Tucson, Arizona, with virtual services available globally.',
+  'Apoyo virtual de lectura, escritura, ESL y educación en casa desde Tucson, Arizona, con servicios virtuales disponibles globalmente.',
   'Virtual services available globally',
   'Servicios virtuales disponibles globalmente',
   'Payment types accepted',
@@ -273,13 +273,13 @@ for (const marker of [
   '/esl-tutoring/',
   '/homeschool-support/',
   '/az-esa-tutoring/',
-  '/yuma-tutoring/',
+  '/tucson-tutoring/',
   '/virtual-tutoring/',
 ]) requireIncludes(sitemap + exactSite, marker)
 
 requireIncludes(read('app/service-landing.tsx'), 'Start a Tutoring Inquiry', 'service landing conversion CTA')
 requireIncludes(read('app/az-esa-tutoring/page.tsx'), 'AZ ESA funds as a payment option', 'AZ ESA landing page')
-requireIncludes(read('app/yuma-tutoring/page.tsx'), 'based in Yuma, Arizona', 'Yuma landing page')
+requireIncludes(read('app/tucson-tutoring/page.tsx'), 'based in Tucson, Arizona', 'Tucson landing page')
 
 for (const marker of [
   'export const runtime = \'nodejs\'',

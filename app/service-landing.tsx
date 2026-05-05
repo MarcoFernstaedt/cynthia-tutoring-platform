@@ -64,7 +64,7 @@ export default function ServiceLandingPage({ eyebrow, title, intro, bullets, sec
           <div className="footer-brand-name">Saguaro Blossoms</div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.25rem' }}>
             <div style={{ width: 28, height: 1.5, background: 'var(--gold)' }} aria-hidden="true"></div>
-            <span style={{ fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)' }}>Yuma, Arizona</span>
+            <span style={{ fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)' }}>Tucson, Arizona</span>
           </div>
           <div className="footer-brand-tagline">
             Every learner blooms at their own pace.<br />Learning as unique and vivid as you are.
@@ -87,12 +87,12 @@ export default function ServiceLandingPage({ eyebrow, title, intro, bullets, sec
             <li><Link href="/esl-tutoring/">ESL Support</Link></li>
             <li><Link href="/homeschool-support/">Homeschool Support</Link></li>
             <li><Link href="/az-esa-tutoring/">AZ ESA Tutoring</Link></li>
-            <li><Link href="/yuma-tutoring/">Yuma Tutoring</Link></li>
+            <li><Link href="/tucson-tutoring/">Tucson Tutoring</Link></li>
           </ul>
         </div>
       </footer>
       <div className="footer-bottom">
-        <span className="footer-copy">© 2025 Saguaro Blossoms Learning. Yuma, Arizona.</span>
+        <span className="footer-copy">© 2025 Saguaro Blossoms Learning. Tucson, Arizona.</span>
         <span className="footer-bilingual">Donde cada estudiante florece.</span>
       </div>
     </>

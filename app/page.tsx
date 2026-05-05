@@ -5,7 +5,7 @@ import { pageMetadata } from './seo'
 export const metadata: Metadata = {
   ...pageMetadata({
     title: 'Saguaro Blossoms Learning | Online Reading, Writing & ESL Tutoring',
-    description: 'Virtual reading, writing, ESL, homeschool, college, and adult tutoring from Yuma, Arizona, with online sessions available globally.',
+    description: 'Virtual reading, writing, ESL, homeschool, college, and adult tutoring from Tucson, Arizona, with online sessions available globally.',
     path: '/',
   }),
   title: {

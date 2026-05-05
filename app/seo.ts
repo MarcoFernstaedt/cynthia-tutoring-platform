@@ -4,7 +4,7 @@ export const siteUrl = 'https://saguaroblossomslearningservices.com'
 export const siteName = 'Saguaro Blossoms Learning'
 
 export const defaultDescription =
-  'Learning as unique and vivid as the saguaro blossom. Saguaro Blossoms Learning provides virtual tutoring services globally, including online reading, writing, ESL, homeschool, college, and adult tutoring from Yuma, Arizona.'
+  'Learning as unique and vivid as the saguaro blossom. Saguaro Blossoms Learning provides virtual tutoring services globally, including online reading, writing, ESL, homeschool, college, and adult tutoring from Tucson, Arizona.'
 
 export const seoKeywords = [
   'online tutoring',
@@ -16,7 +16,7 @@ export const seoKeywords = [
   'language arts tutoring',
   'college writing tutor',
   'adult ESL tutoring',
-  'Yuma Arizona tutor',
+  'Tucson Arizona tutor',
   'AZ ESA tutoring',
   'Saguaro Blossoms Learning',
 ]
@@ -65,12 +65,12 @@ export const organizationJsonLd = {
       slogan: 'Where every learner blossoms at their own pace',
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Yuma',
+        addressLocality: 'Tucson',
         addressRegion: 'AZ',
         addressCountry: 'US',
       },
       areaServed: [
-        { '@type': 'City', name: 'Yuma' },
+        { '@type': 'City', name: 'Tucson' },
         { '@type': 'State', name: 'Arizona' },
         { '@type': 'AdministrativeArea', name: 'United States' },
         { '@type': 'Place', name: 'Worldwide virtual tutoring' },
@@ -144,7 +144,7 @@ export const organizationJsonLd = {
       worksFor: { '@id': `${siteUrl}/#organization` },
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Yuma',
+        addressLocality: 'Tucson',
         addressRegion: 'AZ',
         addressCountry: 'US',
       },
@@ -172,7 +172,7 @@ export const organizationJsonLd = {
           name: 'Does Saguaro Blossoms Learning offer virtual tutoring?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Yes. Saguaro Blossoms Learning provides virtual sessions only, with online tutoring available globally from Yuma, Arizona.',
+            text: 'Yes. Saguaro Blossoms Learning provides virtual sessions only, with online tutoring available globally from Tucson, Arizona.',
           },
         },
         {

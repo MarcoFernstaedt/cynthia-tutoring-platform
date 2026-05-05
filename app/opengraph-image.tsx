@@ -65,7 +65,7 @@ export default function OgImage() {
                 color: '#3A3A3A',
               }}
             >
-              Yuma, Arizona · Virtual Sessions Worldwide
+              Tucson, Arizona · Virtual Sessions Worldwide
             </span>
           </div>
 

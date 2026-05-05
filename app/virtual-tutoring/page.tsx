@@ -15,8 +15,8 @@ export default function Page() {
       title='Virtual Tutoring for Reading, Writing, ESL & Homeschool'
       intro='Virtual tutoring makes supportive reading, writing, ESL, homeschool, college, and adult learning help available from home.'
       bullets={['Online sessions from home','Reading and writing support','ESL and adult learning','Homeschool and college support']}
-      sections={[{title:'Why virtual tutoring works',body:'Online sessions can give learners a comfortable setting, flexible access, and consistent support without travel.'},{title:'What learners can work on',body:'Sessions can cover reading, writing, language arts, ESL, academic writing, homeschool needs, and adult learning goals.'},{title:'Global availability',body:'Saguaro Blossoms Learning is based in Yuma, Arizona, with virtual tutoring available globally.'}]}
-      faqs={[{q:'Are sessions online?',a:'Yes. Sessions are virtual only, so learners can work with Cynthia from home.'},{q:'Where is Saguaro Blossoms Learning based?',a:'Saguaro Blossoms Learning is based in Yuma, Arizona, with online tutoring available globally.'},{q:'Can families ask about AZ ESA funds?',a:'Yes. AZ ESA funds are accepted as a payment option for eligible families.'}]}
+      sections={[{title:'Why virtual tutoring works',body:'Online sessions can give learners a comfortable setting, flexible access, and consistent support without travel.'},{title:'What learners can work on',body:'Sessions can cover reading, writing, language arts, ESL, academic writing, homeschool needs, and adult learning goals.'},{title:'Global availability',body:'Saguaro Blossoms Learning is based in Tucson, Arizona, with virtual tutoring available globally.'}]}
+      faqs={[{q:'Are sessions online?',a:'Yes. Sessions are virtual only, so learners can work with Cynthia from home.'},{q:'Where is Saguaro Blossoms Learning based?',a:'Saguaro Blossoms Learning is based in Tucson, Arizona, with online tutoring available globally.'},{q:'Can families ask about AZ ESA funds?',a:'Yes. AZ ESA funds are accepted as a payment option for eligible families.'}]}
     />
   )
 }
