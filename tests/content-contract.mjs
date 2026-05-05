@@ -20,6 +20,7 @@ const seo = read('app/seo.ts')
 const sitemap = read('app/sitemap.ts')
 const robots = read('app/robots.ts')
 const blossomSvg = read('public/saguaro-blossom-email.svg')
+const websiteBlossomSvg = read('public/saguaro-blossom-website.svg')
 
 function fail(message) {
   console.error(message)
@@ -72,7 +73,7 @@ requireIncludes(exactSite, 'className="page active"', 'active page render class'
 requireIncludes(exactSite, 'className="hero"', 'exact hero class')
 requireIncludes(exactSite, 'className="bloom-art"', 'exact bloom art class')
 requireIncludes(exactSite, 'className="bloom-svg-mark"', 'website flower uses hosted SVG asset')
-requireIncludes(exactSite, 'src={`${assetBasePath}/saguaro-blossom-email.svg`}', 'website flower SVG source with base path')
+requireIncludes(exactSite, 'src={`${assetBasePath}/saguaro-blossom-website.svg`}', 'website flower SVG source with base path')
 requireIncludes(exactSite, 'alt=""', 'website decorative flower has empty alt text')
 requireIncludes(exactSite, 'aria-hidden="true"', 'website decorative flower hidden from screen readers')
 requireIncludes(exactSite, "import Image from 'next/image'", 'website SVG uses Next Image')
@@ -319,6 +320,20 @@ for (const marker of [
 for (const marker of [
   '<svg',
   'viewBox="0 0 280 280"',
+  'Decorative Saguaro Blossoms email flower',
+  'rotate(45 140 140)',
+  'rotate(315 140 140)',
+  'width="80" height="120"',
+  'fill="#D4006A"',
+  'fill="#E8008A"',
+  'fill="#D4A017"',
+  'Saguaro',
+  'Blossoms',
+]) requireIncludes(blossomSvg, marker)
+
+for (const marker of [
+  '<svg',
+  'viewBox="0 0 280 280"',
   'Decorative Saguaro Blossoms flower',
   'rotate(45 140 140)',
   'rotate(315 140 140)',
@@ -328,7 +343,10 @@ for (const marker of [
   'fill="#D4A017"',
   'Every',
   'voice',
-]) requireIncludes(blossomSvg, marker)
+]) requireIncludes(websiteBlossomSvg, marker)
+
+if (blossomSvg.includes('>Every</text>') || blossomSvg.includes('>voice</text>')) fail('Email SVG still says Every voice')
+if (websiteBlossomSvg.includes('>Saguaro</text>') || websiteBlossomSvg.includes('>Blossoms</text>')) fail('Website SVG should keep Every voice')
 
 requireIncludes(nextConfig, "...(isGithubPages ? { output: 'export'", 'GitHub Pages export only when requested')
 if (nextConfig.includes("output: 'export',\n  trailingSlash")) fail('Next config exports unconditionally, which prevents API routes on Vercel')

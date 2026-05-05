@@ -191,7 +191,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
               <div className="bloom-art" aria-hidden="true">
                 <Image
                   className="bloom-svg-mark"
-                  src={`${assetBasePath}/saguaro-blossom-email.svg`}
+                  src={`${assetBasePath}/saguaro-blossom-website.svg`}
                   alt=""
                   width={280}
                   height={280}
