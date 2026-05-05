@@ -363,6 +363,9 @@ for (const marker of [
   'transform: `rotate(${rotation}deg)`',
   "background: '#FFF0F7'",
   "background: '#D4A017'",
+  "display: 'flex'",
+  "alignItems: 'center'",
+  "justifyContent: 'center'",
 ]) requireIncludes(iconImage, marker)
 
 if (openGraphImage.includes('Bloom circle')) fail('Open Graph image still labels the preview art as a circle')

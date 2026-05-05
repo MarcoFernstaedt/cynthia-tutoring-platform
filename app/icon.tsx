@@ -25,6 +25,9 @@ export default function Icon() {
             position: 'relative',
             width: 30,
             height: 30,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           {rotations.map((rotation, index) => (
