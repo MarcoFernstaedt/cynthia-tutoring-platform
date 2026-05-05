@@ -1,7 +1,23 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
+import { Playfair_Display, DM_Sans } from 'next/font/google'
 import './globals.css'
 import { defaultDescription, organizationJsonLd, pageMetadata, siteName, siteUrl } from './seo'
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  display: 'swap',
+  weight: ['400', '500', '700'],
+  style: ['normal', 'italic'],
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  variable: '--font-dmsans',
+  display: 'swap',
+  weight: ['400', '500', '700'],
+})
 
 export const metadata: Metadata = {
   ...pageMetadata({
@@ -30,7 +46,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${playfair.variable} ${dmSans.variable}`} suppressHydrationWarning>
       <body>
         <script
           type="application/ld+json"

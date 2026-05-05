@@ -1494,3 +1494,38 @@ body::-webkit-scrollbar {
     display: none;
   }
 }
+
+/* Override font-family variables with loaded web fonts from next/font/google */
+:root {
+  --font-display: var(--font-playfair, 'Playfair Display', Georgia, serif);
+  --font-body: var(--font-dmsans, 'DM Sans', sans-serif);
+}
+
+/* Fix sticky nav on service landing pages — requires top offset to activate */
+.landing-nav {
+  top: 0;
+}
+
+/* Hover state for SEO internal topic links */
+.seo-internal-links a:hover {
+  background: var(--pink-pale);
+  border-color: rgba(212, 0, 106, 0.35);
+  color: var(--pink);
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+}
+
+/* Subtle focus ring for keyboard navigation on SEO links */
+.seo-internal-links a:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 2px;
+}
+
+/* Landing nav hover state for service links */
+.landing-nav-links a:not(.nav-cta):hover {
+  color: var(--dark);
+}
+
+/* Landing page footer padding for spacing from conversion band */
+.landing-faq + .conversion-band {
+  margin-top: 0;
+}

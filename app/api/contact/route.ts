@@ -140,7 +140,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Please complete all required fields with a valid email address.' }, { status: 400 })
   }
 
-  await sendWithResend(inquiry)
+  try {
+    await sendWithResend(inquiry)
+  } catch (error) {
+    console.error('Contact form email failed:', error)
+    return NextResponse.json(
+      { error: 'There was a problem sending your message. Please try again or contact us directly.' },
+      { status: 500 },
+    )
+  }
 
   return NextResponse.redirect(new URL('/contact/#success-msg', request.url), 303)
 }

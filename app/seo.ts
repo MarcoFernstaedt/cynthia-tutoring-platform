@@ -46,7 +46,7 @@ export function pageMetadata({
       description,
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title,
       description,
     },
@@ -83,6 +83,8 @@ export const organizationJsonLd = {
         'College writing',
         'Adult literacy',
       ],
+      employee: { '@id': `${siteUrl}/#cynthia` },
+      founder: { '@id': `${siteUrl}/#cynthia` },
       makesOffer: [
         { '@id': `${siteUrl}/services/#reading-tutoring` },
         { '@id': `${siteUrl}/services/#writing-tutoring` },
@@ -133,6 +135,33 @@ export const organizationJsonLd = {
       provider: { '@id': `${siteUrl}/#organization` },
       areaServed: 'Worldwide',
       description: 'Flexible reading, writing, curriculum, assessment, and language arts support for homeschool families.',
+    },
+    {
+      '@type': 'Person',
+      '@id': `${siteUrl}/#cynthia`,
+      name: 'Cynthia',
+      jobTitle: 'English Tutor & Language Arts Specialist',
+      worksFor: { '@id': `${siteUrl}/#organization` },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Yuma',
+        addressRegion: 'AZ',
+        addressCountry: 'US',
+      },
+      knowsAbout: [
+        'Reading tutoring',
+        'Writing tutoring',
+        'English as a Second Language',
+        'Homeschool support',
+        'College writing',
+        'Adult literacy',
+      ],
+      hasCredential: [
+        "Bachelor's degree in English Studies, Arizona State University",
+        "Master's degree in English Studies, Arizona State University",
+        'Doctoral studies in English Literature',
+      ],
+      memberOf: ['AZTESOL', 'AETA', 'NCTE/CCCC', 'TESOL', 'MLA', 'GSOLE'],
     },
     {
       '@type': 'FAQPage',
