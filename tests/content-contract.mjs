@@ -251,6 +251,9 @@ requireIncludes(css, 'overflow-x: hidden', 'horizontal overscroll prevention')
 requireIncludes(css, 'overflow-y: auto', 'mouse wheel vertical scrolling')
 requireIncludes(css, 'scrollbar-width: none', 'modern hidden scrollbar in Firefox')
 requireIncludes(css, 'html::-webkit-scrollbar', 'modern hidden scrollbar in Chromium/Safari')
+requireIncludes(css, 'flex-wrap: wrap', 'mobile tagline wraps instead of clipping')
+requireIncludes(css, 'overflow-wrap: anywhere', 'mobile tagline long text cannot be cut off')
+requireIncludes(css, 'overflow: visible', 'mobile hero/flower overflow remains visible')
 
 
 for (const marker of [
