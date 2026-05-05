@@ -294,6 +294,16 @@ for (const marker of [
   'New Saguaro Blossoms Learning inquiry',
   'https://api.resend.com/emails',
   'NextResponse.redirect(new URL(\'/contact/#success-msg\'',
+  'buildOwnerHtml',
+  'buildVisitorHtml',
+  'buildBlossomMark',
+  'Your inquiry was received',
+  'Thank you for reaching out to Saguaro Blossoms Learning',
+  'Every learner blossoms at their own pace',
+  'We will review your message and follow up directly.',
+  'to: [inquiry.email]',
+  'reply_to: to',
+  'Promise.all',
 ]) requireIncludes(contactApi, marker)
 
 requireIncludes(nextConfig, "...(isGithubPages ? { output: 'export'", 'GitHub Pages export only when requested')
