@@ -6,6 +6,71 @@ export const alt = 'Saguaro Blossoms Learning — Online Tutoring for Every Lear
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
+const petalRotations = [0, 45, 90, 135, 180, 225, 270, 315]
+
+function PreviewFlower({ scale = 1 }: { scale?: number }) {
+  const petalWidth = 58 * scale
+  const petalHeight = 92 * scale
+  const center = 100 * scale
+
+  return (
+    <div
+      style={{
+        position: 'relative',
+        width: 200 * scale,
+        height: 200 * scale,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      {petalRotations.map((rotation, index) => (
+        <div
+          key={rotation}
+          style={{
+            position: 'absolute',
+            left: center - petalWidth / 2,
+            top: 12 * scale,
+            width: petalWidth,
+            height: petalHeight,
+            borderRadius: `${petalWidth / 2}px ${petalWidth / 2}px ${petalWidth / 2}px ${petalWidth / 2}px / ${petalHeight * 0.58}px ${petalHeight * 0.58}px ${petalHeight * 0.42}px ${petalHeight * 0.42}px`,
+            background: index % 2 === 0 ? '#D4006A' : '#E8008A',
+            opacity: 0.86,
+            transform: `rotate(${rotation}deg)`,
+            transformOrigin: `${petalWidth / 2}px ${center - 12 * scale}px`,
+          }}
+        />
+      ))}
+      <div
+        style={{
+          position: 'absolute',
+          left: center - 39 * scale,
+          top: center - 39 * scale,
+          width: 78 * scale,
+          height: 78 * scale,
+          borderRadius: '50%',
+          background: '#D4A017',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+        }}
+      >
+        <span
+          style={{
+            color: 'white',
+            fontSize: 11 * scale,
+            fontStyle: 'italic',
+            lineHeight: 1.35,
+          }}
+        >
+          Every{'\n'}voice
+        </span>
+      </div>
+    </div>
+  )
+}
+
 export default function OgImage() {
   return new ImageResponse(
     (
@@ -19,7 +84,6 @@ export default function OgImage() {
           fontFamily: 'Georgia, "Times New Roman", serif',
         }}
       >
-        {/* Left accent stripe */}
         <div
           style={{
             position: 'absolute',
@@ -31,7 +95,6 @@ export default function OgImage() {
           }}
         />
 
-        {/* Main content column */}
         <div
           style={{
             display: 'flex',
@@ -41,7 +104,6 @@ export default function OgImage() {
             flex: 1,
           }}
         >
-          {/* Eyebrow row */}
           <div
             style={{
               display: 'flex',
@@ -70,7 +132,6 @@ export default function OgImage() {
             </span>
           </div>
 
-          {/* Brand name */}
           <div
             style={{
               fontSize: 68,
@@ -94,7 +155,6 @@ export default function OgImage() {
             Learning
           </div>
 
-          {/* Tagline with gold left border */}
           <div
             style={{
               display: 'flex',
@@ -117,7 +177,6 @@ export default function OgImage() {
             </span>
           </div>
 
-          {/* Service pills */}
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             {['Reading', 'Writing', 'ESL', 'Homeschool', 'Adult Learning', 'AZ ESA'].map((tag) => (
               <div
@@ -138,7 +197,6 @@ export default function OgImage() {
           </div>
         </div>
 
-        {/* Right decorative panel */}
         <div
           style={{
             width: 260,
@@ -149,42 +207,7 @@ export default function OgImage() {
             flexShrink: 0,
           }}
         >
-          {/* Bloom circle */}
-          <div
-            style={{
-              width: 190,
-              height: 190,
-              borderRadius: '50%',
-              background: 'linear-gradient(135deg, #D4006A 0%, #E8008A 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <div
-              style={{
-                width: 76,
-                height: 76,
-                borderRadius: '50%',
-                background: '#D4A017',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                textAlign: 'center',
-              }}
-            >
-              <span
-                style={{
-                  color: 'white',
-                  fontSize: 11,
-                  fontStyle: 'italic',
-                  lineHeight: 1.4,
-                }}
-              >
-                Every{'\n'}voice
-              </span>
-            </div>
-          </div>
+          <PreviewFlower />
         </div>
       </div>
     ),

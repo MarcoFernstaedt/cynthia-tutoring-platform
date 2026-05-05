@@ -1173,23 +1173,15 @@ body::-webkit-scrollbar {
 }
 
 /* SVG flower mark used in the hero. */
-.bloom-art {
-  transform: translateX(-72px);
-}
-
 .bloom-svg-mark {
   display: block;
-  width: min(100%, 320px);
+  width: min(100%, 280px);
   height: auto;
   margin: 0 auto 2rem;
   filter: drop-shadow(0 18px 35px rgba(212, 0, 106, 0.18));
 }
 
 @media (max-width: 760px) {
-  .bloom-art {
-    transform: none;
-  }
-
   .bloom-svg-mark {
     width: min(100%, 235px);
   }

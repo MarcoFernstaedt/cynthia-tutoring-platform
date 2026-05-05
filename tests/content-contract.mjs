@@ -19,6 +19,8 @@ const packageJson = read('package.json')
 const seo = read('app/seo.ts')
 const sitemap = read('app/sitemap.ts')
 const robots = read('app/robots.ts')
+const openGraphImage = read('app/opengraph-image.tsx')
+const iconImage = read('app/icon.tsx')
 const blossomSvg = read('public/saguaro-blossom-email.svg')
 const websiteBlossomSvg = read('public/saguaro-blossom-website.svg')
 
@@ -79,8 +81,6 @@ requireIncludes(exactSite, 'aria-hidden="true"', 'website decorative flower hidd
 requireIncludes(exactSite, "import Image from 'next/image'", 'website SVG uses Next Image')
 requireIncludes(nextConfig, 'NEXT_PUBLIC_SITE_BASE_PATH', 'GitHub Pages SVG asset base path env')
 requireIncludes(css, 'margin: 0 auto 2rem;', 'website flower preserves spacing before quote')
-requireIncludes(css, 'transform: translateX(-72px);', 'website flower shifted left in hero')
-requireIncludes(css, 'width: min(100%, 320px);', 'website flower uses wider organic SVG sizing')
 requireIncludes(exactSite, 'className="tagline-strip"', 'exact tagline strip class')
 requireIncludes(exactSite, 'showPage(\'contact\')', 'contact navigation conversion')
 if (combinedPages.includes('from \'@/components/site\'') || combinedPages.includes('from "@/components/site"')) {
@@ -335,12 +335,11 @@ for (const marker of [
 
 for (const marker of [
   '<svg',
-  'viewBox="0 0 320 280"',
+  'viewBox="0 0 280 280"',
   'Decorative Saguaro Blossoms flower',
-  '<path id="long-petal"',
-  '<path id="short-petal"',
-  'rotate(45 160 140)',
-  'rotate(315 160 140)',
+  'rotate(45 140 140)',
+  'rotate(315 140 140)',
+  'width="80" height="120"',
   'fill="#D4006A"',
   'fill="#E8008A"',
   'fill="#D4A017"',
@@ -350,6 +349,25 @@ for (const marker of [
 
 if (blossomSvg.includes('>Every</text>') || blossomSvg.includes('>voice</text>')) fail('Email SVG still says Every voice')
 if (websiteBlossomSvg.includes('>Saguaro</text>') || websiteBlossomSvg.includes('>Blossoms</text>')) fail('Website SVG should keep Every voice')
+
+for (const marker of [
+  'function PreviewFlower',
+  'petalRotations',
+  'borderRadius: `${petalWidth / 2}px',
+  'transform: `rotate(${rotation}deg)`',
+  'Every{\'\\n\'}voice',
+]) requireIncludes(openGraphImage, marker)
+
+for (const marker of [
+  'const rotations = [0, 45, 90, 135, 180, 225, 270, 315]',
+  'transform: `rotate(${rotation}deg)`',
+  "background: '#FFF0F7'",
+  "background: '#D4A017'",
+]) requireIncludes(iconImage, marker)
+
+if (openGraphImage.includes('Bloom circle')) fail('Open Graph image still labels the preview art as a circle')
+if (openGraphImage.includes('width: 190') && openGraphImage.includes('height: 190') && openGraphImage.includes("borderRadius: '50%'")) fail('Open Graph image still uses the old circular preview badge')
+if (iconImage.includes("borderRadius: '50%',\n          background: 'linear-gradient(135deg")) fail('Icon still uses old circular badge')
 
 requireIncludes(nextConfig, "...(isGithubPages ? { output: 'export'", 'GitHub Pages export only when requested')
 if (nextConfig.includes("output: 'export',\n  trailingSlash")) fail('Next config exports unconditionally, which prevents API routes on Vercel')
