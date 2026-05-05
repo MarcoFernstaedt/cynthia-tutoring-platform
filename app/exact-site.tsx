@@ -1,12 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { track } from '@vercel/analytics'
 
 type PageName = 'home' | 'about' | 'services' | 'contact'
 type Language = 'en' | 'es'
 const pages: PageName[] = ['home', 'about', 'services', 'contact']
+const assetBasePath = process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? ''
 
 function cx(active: boolean) {
   return active ? 'active' : undefined
@@ -186,20 +188,15 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
               </div>
             </div>
             <div className="hero-right">
-              <div className="bloom-art" aria-label="Decorative saguaro blossom symbol">
-                <div className="bloom-petals" aria-hidden="true">
-                  <div className="petal"></div>
-                  <div className="petal"></div>
-                  <div className="petal"></div>
-                  <div className="petal"></div>
-                  <div className="petal"></div>
-                  <div className="petal"></div>
-                  <div className="petal"></div>
-                  <div className="petal"></div>
-                  <div className="bloom-center-circle">
-                    <div className="bloom-center-text">Every<br />voice</div>
-                  </div>
-                </div>
+              <div className="bloom-art" aria-hidden="true">
+                <Image
+                  className="bloom-svg-mark"
+                  src={`${assetBasePath}/saguaro-blossom-email.svg`}
+                  alt=""
+                  width={280}
+                  height={280}
+                  priority
+                />
                 <p className="bloom-quote">Every reader. Every writer. Every learner.</p>
               </div>
             </div>
