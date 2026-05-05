@@ -16,6 +16,9 @@ const layout = read('app/layout.tsx')
 const contactApi = read('app/api/contact/route.ts')
 const nextConfig = read('next.config.mjs')
 const packageJson = read('package.json')
+const seo = read('app/seo.ts')
+const sitemap = read('app/sitemap.ts')
+const robots = read('app/robots.ts')
 
 function fail(message) {
   console.error(message)
@@ -64,7 +67,7 @@ requireIncludes(exactSite, 'id="page-home"', 'home page id')
 requireIncludes(exactSite, 'id="page-about"', 'about page id')
 requireIncludes(exactSite, 'id="page-services"', 'services page id')
 requireIncludes(exactSite, 'id="page-contact"', 'contact page id')
-requireIncludes(exactSite, 'className={`page ${activePage === \'home\' ? \'active\' : \'\'}`}', 'active home page class')
+requireIncludes(exactSite, 'className="page active"', 'active page render class')
 requireIncludes(exactSite, 'className="hero"', 'exact hero class')
 requireIncludes(exactSite, 'className="bloom-art"', 'exact bloom art class')
 requireIncludes(exactSite, 'className="bloom-petals"', 'exact bloom petals class')
@@ -109,9 +112,9 @@ for (const marker of [
   '@media (prefers-reduced-motion: reduce)',
 ]) requireIncludes(exactSite + css, marker)
 
-requireIncludes(layout, 'Yuma, Arizona')
-requireIncludes(layout, 'Saguaro Blossoms Learning')
-requireIncludes(layout, 'Learning as unique and vivid as the saguaro blossom')
+requireIncludes(layout + seo, 'Yuma, Arizona')
+requireIncludes(layout + seo, 'Saguaro Blossoms Learning')
+requireIncludes(layout + seo, 'Learning as unique and vivid as the saguaro blossom')
 requireIncludes(packageJson, '"@vercel/analytics"', 'Vercel Analytics dependency')
 requireIncludes(layout, "import { Analytics } from '@vercel/analytics/next'", 'Vercel Analytics layout import')
 requireIncludes(layout, '<Analytics />', 'Vercel Analytics component')
@@ -124,6 +127,53 @@ for (const marker of [
   "track('contact_form_submit'",
   "track('pricing_package_view'",
 ]) requireIncludes(exactSite, marker)
+
+
+// SEO launch requirements for the production custom domain.
+for (const marker of [
+  'https://saguaroblossomslearningservices.com',
+  'Online Reading, Writing & ESL Tutoring',
+  'metadataBase: new URL(siteUrl)',
+  'alternates: { canonical }',
+  'openGraph',
+  'twitter',
+  'robots',
+  'application/ld+json',
+  'organizationJsonLd',
+]) requireIncludes(layout + seo, marker)
+
+for (const marker of [
+  'EducationalOrganization',
+  'LocalBusiness',
+  'FAQPage',
+  'Virtual reading tutoring',
+  'Virtual writing tutoring',
+  'Virtual ESL tutoring',
+  'Virtual homeschool language arts support',
+  'AZ ESA tutoring',
+]) requireIncludes(seo, marker)
+
+for (const marker of [
+  'Online tutoring for reading, writing, ESL, and homeschool support',
+  'Saguaro Blossoms Learning provides virtual tutoring for K-12 students',
+  'Online tutoring available globally',
+  'seo-service-summary',
+  'seo-service-list',
+]) requireIncludes(exactSite + css, marker)
+
+for (const marker of [
+  'export default function sitemap()',
+  '/services/',
+  "priority: 1",
+  'changeFrequency',
+]) requireIncludes(sitemap, marker)
+
+for (const marker of [
+  'export default function robots()',
+  "allow: '/'",
+  'sitemap.xml',
+  'host: siteUrl',
+]) requireIncludes(robots, marker)
 
 // Cynthia feedback from 2026-04-27: restore her About blurb, Why Saguaro
 // Blossoms rationale, and refined pricing while keeping the site accessible.
@@ -182,13 +232,54 @@ for (const marker of [
 for (const forbidden of ['In-person', 'in-person', 'in person', 'presencial', 'Presencial', 'Virtual services available statewide', 'Servicios virtuales disponibles en todo Arizona', 'buy.stripe.com', 'paypal.com', 'square.link', 'apple-pay', 'Apple Pay button']) {
   if (exactSite.includes(forbidden) || layout.includes(forbidden)) fail(`Virtual-only update still contains forbidden in-person wording: ${forbidden}`)
 }
-requireIncludes(layout, 'virtual tutoring services globally')
+requireIncludes(layout + seo, 'virtual tutoring services globally')
 requireIncludes(css, '.payment-method-list', 'payment method list styling')
 requireIncludes(css, '.form-honeypot', 'contact form honeypot styling')
 requireIncludes(css, '.form-note', 'contact form note styling')
 requireIncludes(css, '.contact-form-wrap .form-success:target', 'contact form visible success styling')
 requireIncludes(css, 'overscroll-behavior-y: none', 'overscroll bounce prevention')
 requireIncludes(css, 'overflow-x: hidden', 'horizontal overscroll prevention')
+requireIncludes(css, 'overflow-y: auto', 'mouse wheel vertical scrolling')
+requireIncludes(css, 'scrollbar-width: none', 'modern hidden scrollbar in Firefox')
+requireIncludes(css, 'html::-webkit-scrollbar', 'modern hidden scrollbar in Chromium/Safari')
+
+
+for (const marker of [
+  'function pagePath',
+  "window.history.pushState(null, '', nextPath)",
+  'href={pagePath(page)}',
+  'id="reading-tutoring"',
+  'id="writing-tutoring"',
+  'id="esl-tutoring"',
+  'id="homeschool-support"',
+  'faq-section',
+  'Common questions about virtual tutoring',
+  'seo-internal-links',
+  'conversion-band',
+]) requireIncludes(exactSite, marker)
+
+for (const marker of [
+  'Large-desktop polish',
+  'max-width: 1280px',
+  'max-width: 1060px',
+  '.landing-page',
+  '.landing-hero',
+  '.landing-highlights',
+]) requireIncludes(css, marker)
+
+for (const marker of [
+  '/reading-tutoring/',
+  '/writing-tutoring/',
+  '/esl-tutoring/',
+  '/homeschool-support/',
+  '/az-esa-tutoring/',
+  '/yuma-tutoring/',
+  '/virtual-tutoring/',
+]) requireIncludes(sitemap + exactSite, marker)
+
+requireIncludes(read('app/service-landing.tsx'), 'Start a Tutoring Inquiry', 'service landing conversion CTA')
+requireIncludes(read('app/az-esa-tutoring/page.tsx'), 'AZ ESA funds as a payment option', 'AZ ESA landing page')
+requireIncludes(read('app/yuma-tutoring/page.tsx'), 'based in Yuma, Arizona', 'Yuma landing page')
 
 for (const marker of [
   'export const runtime = \'nodejs\'',

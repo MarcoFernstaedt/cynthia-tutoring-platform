@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { track } from '@vercel/analytics'
 
 type PageName = 'home' | 'about' | 'services' | 'contact'
@@ -9,6 +10,10 @@ const pages: PageName[] = ['home', 'about', 'services', 'contact']
 
 function cx(active: boolean) {
   return active ? 'active' : undefined
+}
+
+function pagePath(pageName: PageName) {
+  return pageName === 'home' ? '/' : `/${pageName}/`
 }
 
 export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage?: PageName }) {
@@ -41,6 +46,9 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
         'Six- and eight-week commitments receive 10% off; twelve-week commitments receive 15% off.',
         'A 24-hour cancellation policy applies, with a cancellation fee of ½ the standard rate for cancellations not made within 24 hours.',
       ],
+      seoHeading: 'Online tutoring for reading, writing, ESL, and homeschool support',
+      seoBody: "Saguaro Blossoms Learning provides virtual tutoring for K-12 students, homeschool families, college students, adult learners, and English language learners. Sessions focus on reading development, writing confidence, language arts, academic writing, ESL fluency, and individualized support rooted in each learner's pace.",
+      seoPoints: ['Virtual sessions only', 'Based in Yuma, Arizona', 'Online tutoring available globally', 'AZ ESA funds accepted'],
     },
     es: {
       home: 'Inicio', about: 'Acerca de', services: 'Servicios', getStarted: 'Comenzar',
@@ -66,6 +74,9 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
         'Los compromisos de seis y ocho semanas reciben 10% de descuento; los compromisos de doce semanas reciben 15% de descuento.',
         'Se aplica una política de cancelación de 24 horas, con una tarifa de cancelación de la mitad de la tarifa estándar si no se cancela con 24 horas de anticipación.',
       ],
+      seoHeading: 'Tutoría virtual de lectura, escritura, ESL y apoyo para educación en casa',
+      seoBody: 'Saguaro Blossoms Learning ofrece tutoría virtual para estudiantes K-12, familias de educación en casa, universitarios, adultos y estudiantes de inglés. Las sesiones apoyan lectura, escritura, artes del lenguaje, escritura académica, fluidez en inglés y aprendizaje individualizado al ritmo de cada estudiante.',
+      seoPoints: ['Solo sesiones virtuales', 'Con base en Yuma, Arizona', 'Tutoría en línea disponible globalmente', 'Se aceptan fondos AZ ESA'],
     },
   } satisfies Record<Language, Record<string, unknown>>
   const t = copy[language] as typeof copy.en
@@ -73,6 +84,10 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
   function showPage(pageName: PageName) {
     setActivePage(pageName)
     setMenuOpen(false)
+    const nextPath = pagePath(pageName)
+    if (window.location.pathname !== nextPath) {
+      window.history.pushState(null, '', nextPath)
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
@@ -96,10 +111,10 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
     <>
       <a className="skip-link" href="#main-content">Skip to main content</a>
       <nav aria-label="Primary navigation">
-        <a className="nav-brand" href="#home" onClick={(event) => { event.preventDefault(); showPage('home') }} aria-label="Saguaro Blossoms home">
+        <Link className="nav-brand" href="/" onClick={(event) => { event.preventDefault(); showPage('home') }} aria-label="Saguaro Blossoms home">
           <span className="nav-brand-dot" aria-hidden="true"></span>
           Saguaro Blossoms
-        </a>
+        </Link>
         <button
           className="mobile-menu-toggle"
           type="button"
@@ -115,27 +130,27 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
         <ul className="nav-links" id="primary-nav-links" data-open={menuOpen ? 'true' : 'false'}>
           {pages.slice(0, 3).map((page) => (
             <li key={page}>
-              <a
-                href={`#${page}`}
+              <Link
+                href={pagePath(page)}
                 id={`nav-${page}`}
                 className={cx(activePage === page)}
                 aria-current={activePage === page ? 'page' : undefined}
                 onClick={(event) => { event.preventDefault(); showPage(page) }}
               >
                 {page === 'home' ? t.home : page === 'about' ? t.about : t.services}
-              </a>
+              </Link>
             </li>
           ))}
           <li>
-            <a
-              href="#contact"
+            <Link
+              href="/contact/"
               id="nav-contact"
               className={`nav-cta ${activePage === 'contact' ? 'active' : ''}`}
               aria-current={activePage === 'contact' ? 'page' : undefined}
               onClick={(event) => { event.preventDefault(); showPage('contact') }}
             >
               {t.getStarted}
-            </a>
+            </Link>
           </li>
         </ul>
         <div className="language-toggle" role="group" aria-label="Switch site language">
@@ -154,7 +169,8 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
 
       <main id="main-content" lang={language}>
         {/* ===== HOME ===== */}
-        <div className={`page ${activePage === 'home' ? 'active' : ''}`} id="page-home">
+        {activePage === 'home' && (
+        <div className="page active" id="page-home">
           <section className="hero" aria-labelledby="home-title">
             <div className="hero-left">
               <div className="eyebrow">{t.location}</div>
@@ -222,10 +238,52 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
               </div>
             </div>
           </section>
+
+          <section className="seo-service-summary" aria-labelledby="online-tutoring-title">
+            <div>
+              <div className="eyebrow">Online Tutoring</div>
+              <h2 className="section-title" id="online-tutoring-title">{t.seoHeading}</h2>
+              <p className="section-sub">{t.seoBody}</p>
+            </div>
+            <div>
+              <ul className="seo-service-list" aria-label={language === 'en' ? 'Tutoring service highlights' : 'Puntos destacados de tutoría'}>
+                {t.seoPoints.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+              <div className="seo-internal-links" aria-label="Tutoring topics">
+                <Link href="/reading-tutoring/">Reading tutoring</Link>
+                <Link href="/writing-tutoring/">Writing tutoring</Link>
+                <Link href="/esl-tutoring/">ESL tutoring</Link>
+                <Link href="/homeschool-support/">Homeschool support</Link>
+                <Link href="/az-esa-tutoring/">AZ ESA tutoring</Link>
+                <Link href="/yuma-tutoring/">Yuma tutoring</Link>
+              </div>
+            </div>
+          </section>
+
+          <section className="faq-section" aria-labelledby="faq-title">
+            <div className="eyebrow">Questions</div>
+            <h2 className="section-title" id="faq-title">Common questions about virtual tutoring</h2>
+            <div className="faq-grid">
+              <article>
+                <h3>Does Saguaro Blossoms Learning offer virtual tutoring?</h3>
+                <p>Yes. Saguaro Blossoms Learning provides virtual sessions only, with online tutoring available globally from Yuma, Arizona.</p>
+              </article>
+              <article>
+                <h3>What subjects does Saguaro Blossoms Learning support?</h3>
+                <p>Services include reading development, writing and expression, English as a Second Language, homeschool support, college writing, adult literacy, and language arts tutoring.</p>
+              </article>
+              <article>
+                <h3>What payment types are accepted?</h3>
+                <p>Payment is currently accepted through AZ ESA funds, CashApp, Venmo, and Zelle.</p>
+              </article>
+            </div>
+          </section>
         </div>
+        )}
 
         {/* ===== ABOUT ===== */}
-        <div className={`page ${activePage === 'about' ? 'active' : ''}`} id="page-about">
+        {activePage === 'about' && (
+        <div className="page active" id="page-about">
           <section className="about-hero" aria-labelledby="about-title">
             <div>
               <div className="eyebrow">Our Story</div>
@@ -282,16 +340,18 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
             </div>
           </section>
         </div>
+        )}
 
         {/* ===== SERVICES ===== */}
-        <div className={`page ${activePage === 'services' ? 'active' : ''}`} id="page-services">
+        {activePage === 'services' && (
+        <div className="page active" id="page-services">
           <section className="services-hero" aria-labelledby="services-title">
             <div className="eyebrow">What We Offer</div>
             <h1 className="page-title" id="services-title">Nurturing readers.<br />Nurturing writers.<br /><em>Nurturing confidence.</em></h1>
           </section>
 
           <div className="services-grid">
-            <div className="service-card">
+            <div className="service-card" id="reading-tutoring">
               <span className="service-tag">Reading</span>
               <h3>Reading Development</h3>
               <p>From phonics and fluency to comprehension and critical analysis — we meet every reader at their level and guide them forward at their own pace.</p>
@@ -302,7 +362,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
                 <li>Adult reading development</li>
               </ul>
             </div>
-            <div className="service-card">
+            <div className="service-card" id="writing-tutoring">
               <span className="service-tag">Writing</span>
               <h3>Writing &amp; Expression</h3>
               <p>Writing is finding your voice. We help every learner discover theirs — from forming sentences to crafting essays and authentic personal expression.</p>
@@ -313,7 +373,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
                 <li>Writing confidence for adults</li>
               </ul>
             </div>
-            <div className="service-card">
+            <div className="service-card" id="esl-tutoring">
               <span className="service-tag">ESL</span>
               <h3>English as a Second Language</h3>
               <p>Language is a bridge. We help adult learners cross it with dignity, confidence, and the support they deserve on their unique journey.</p>
@@ -324,7 +384,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
                 <li>Pronunciation &amp; fluency support</li>
               </ul>
             </div>
-            <div className="service-card">
+            <div className="service-card" id="homeschool-support">
               <span className="service-tag">Homeschool</span>
               <h3>Homeschool Support</h3>
               <p>A flexible, personalized partnership for homeschool families seeking holistic language arts support tailored to their child&apos;s one-of-a-kind journey.</p>
@@ -400,10 +460,18 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
               </div>
             </div>
           </section>
+
+          <section className="conversion-band" aria-labelledby="consult-title">
+            <h2 id="consult-title">Not sure where to start?</h2>
+            <p>Tell Cynthia what your learner needs, and she will recommend the best virtual tutoring path for reading, writing, ESL, homeschool support, college writing, or adult learning.</p>
+            <button className="btn-primary" type="button" onClick={() => startConsultation('pricing_bottom')}>Request a Tutoring Inquiry</button>
+          </section>
         </div>
+        )}
 
         {/* ===== CONTACT ===== */}
-        <div className={`page ${activePage === 'contact' ? 'active' : ''}`} id="page-contact">
+        {activePage === 'contact' && (
+        <div className="page active" id="page-contact">
           <section className="contact-hero" aria-labelledby="contact-title">
             <div className="eyebrow">Get in Touch</div>
             <h1 className="page-title" id="contact-title">Your story matters.<br /><em>Let&apos;s grow it together.</em></h1>
@@ -495,6 +563,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
             </form>
           </section>
         </div>
+        )}
       </main>
 
       <footer>
@@ -511,19 +580,21 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
         <div>
           <div className="footer-col-title">Navigate</div>
           <ul className="footer-links">
-            <li><a href="#home" onClick={(event) => { event.preventDefault(); showPage('home') }}>Home</a></li>
-            <li><a href="#about" onClick={(event) => { event.preventDefault(); showPage('about') }}>About</a></li>
-            <li><a href="#services" onClick={(event) => { event.preventDefault(); showPage('services') }}>Services</a></li>
-            <li><a href="#contact" onClick={(event) => { event.preventDefault(); showPage('contact') }}>Contact</a></li>
+            <li><Link href="/" onClick={(event) => { event.preventDefault(); showPage('home') }}>Home</Link></li>
+            <li><Link href="/about/" onClick={(event) => { event.preventDefault(); showPage('about') }}>About</Link></li>
+            <li><Link href="/services/" onClick={(event) => { event.preventDefault(); showPage('services') }}>Services</Link></li>
+            <li><Link href="/contact/" onClick={(event) => { event.preventDefault(); showPage('contact') }}>Contact</Link></li>
           </ul>
         </div>
         <div>
           <div className="footer-col-title">Services</div>
           <ul className="footer-links">
-            <li><a href="#services" onClick={(event) => { event.preventDefault(); showPage('services') }}>Reading Development</a></li>
-            <li><a href="#services" onClick={(event) => { event.preventDefault(); showPage('services') }}>Writing &amp; Expression</a></li>
-            <li><a href="#services" onClick={(event) => { event.preventDefault(); showPage('services') }}>ESL Support</a></li>
-            <li><a href="#services" onClick={(event) => { event.preventDefault(); showPage('services') }}>Homeschool Support</a></li>
+            <li><Link href="/reading-tutoring/">Reading Development</Link></li>
+            <li><Link href="/writing-tutoring/">Writing &amp; Expression</Link></li>
+            <li><Link href="/esl-tutoring/">ESL Support</Link></li>
+            <li><Link href="/homeschool-support/">Homeschool Support</Link></li>
+            <li><Link href="/az-esa-tutoring/">AZ ESA Tutoring</Link></li>
+            <li><Link href="/yuma-tutoring/">Yuma Tutoring</Link></li>
           </ul>
         </div>
       </footer>
