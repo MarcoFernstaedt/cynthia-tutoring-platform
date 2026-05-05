@@ -254,9 +254,7 @@ requireIncludes(css, 'html::-webkit-scrollbar', 'modern hidden scrollbar in Chro
 requireIncludes(css, 'flex-wrap: wrap', 'mobile tagline wraps instead of clipping')
 requireIncludes(css, 'overflow-wrap: anywhere', 'mobile tagline long text cannot be cut off')
 requireIncludes(css, 'overflow: visible', 'mobile hero/flower overflow remains visible')
-requireIncludes(css, 'position: static', 'mobile language toggle stays in header flow')
-requireIncludes(css, 'min-height: 108px', 'mobile header reserves language toggle space')
-requireIncludes(css, 'padding-top: 108px', 'mobile page offset matches taller header')
+requireIncludes(css, 'margin-top: 0', 'mobile footer bottom removes ivory gap')
 requireIncludes(css, 'row-gap: 2rem', 'mobile footer columns have breathing room')
 
 

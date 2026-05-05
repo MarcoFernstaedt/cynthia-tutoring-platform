@@ -1061,23 +1061,21 @@ body::-webkit-scrollbar {
 @media (max-width: 760px) {
   .skip-link { font-size: 0.8rem; }
   nav {
-    height: auto;
-    min-height: 108px;
-    padding: 0.65rem 1.1rem 0.7rem;
+    height: 70px;
+    min-height: 70px;
+    padding: 0 1.1rem;
     align-items: center;
-    gap: 0.55rem 0.75rem;
-    flex-wrap: wrap;
+    gap: 0.75rem;
+    flex-wrap: nowrap;
   }
   .nav-brand { font-size: clamp(1.02rem, 4.6vw, 1.22rem); min-width: 0; }
   .language-toggle {
     order: 3;
-    position: static;
-    z-index: auto;
-    width: max-content;
-    max-width: 100%;
-    margin: 0 auto;
+    position: absolute;
+    top: 78px;
+    right: 1rem;
+    z-index: 102;
     background: var(--ivory);
-    box-shadow: 0 8px 22px rgba(45, 31, 19, 0.08);
   }
   .language-toggle button { font-size: 0.68rem; padding: 0.32rem 0.55rem; }
   .mobile-menu-toggle {
@@ -1106,10 +1104,10 @@ body::-webkit-scrollbar {
   }
   .mobile-menu-backdrop {
     position: fixed;
-    inset: 108px 0 0;
+    inset: 70px 0 0;
     z-index: 99;
     width: 100vw;
-    min-height: calc(100vh - 108px);
+    min-height: calc(100vh - 70px);
     border: 0;
     background: rgba(255, 251, 240, 0.82);
     backdrop-filter: blur(2px);
@@ -1151,7 +1149,7 @@ body::-webkit-scrollbar {
     margin-top: 0.2rem;
     padding: 0.8rem 1rem !important;
   }
-  .page { padding-top: 108px; }
+  .page { padding-top: 70px; }
   .hero { grid-template-columns: 1fr; min-height: auto; }
   .hero-left { padding: 3rem 1.25rem 3.25rem; }
   .hero-h1 { font-size: clamp(2.45rem, 13vw, 3.3rem); line-height: 1.08; }
@@ -1196,6 +1194,9 @@ body::-webkit-scrollbar {
   footer {
     padding-top: 4.25rem;
     row-gap: 2rem;
+  }
+  .footer-bottom {
+    margin-top: 0;
   }
   .footer-brand-tagline {
     margin-top: 0.9rem;
