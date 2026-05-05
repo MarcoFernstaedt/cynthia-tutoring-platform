@@ -37,17 +37,24 @@ function escapeHtml(value: string) {
     .replaceAll("'", '&#039;')
 }
 
-function buildBlossomMark() {
+function buildWebsiteFlowerMark() {
   return `
-    <div aria-hidden="true" style="width:72px; height:72px; margin:0 auto 14px; position:relative;">
-      <div style="position:absolute; left:23px; top:0; width:26px; height:34px; background:#D4006A; border-radius:999px 999px 8px 8px; transform-origin:50% 36px;"></div>
-      <div style="position:absolute; left:23px; top:0; width:26px; height:34px; background:#E8008A; border-radius:999px 999px 8px 8px; transform:rotate(72deg); transform-origin:50% 36px;"></div>
-      <div style="position:absolute; left:23px; top:0; width:26px; height:34px; background:#F26AA7; border-radius:999px 999px 8px 8px; transform:rotate(144deg); transform-origin:50% 36px;"></div>
-      <div style="position:absolute; left:23px; top:0; width:26px; height:34px; background:#D4A017; border-radius:999px 999px 8px 8px; transform:rotate(216deg); transform-origin:50% 36px;"></div>
-      <div style="position:absolute; left:23px; top:0; width:26px; height:34px; background:#F0C84A; border-radius:999px 999px 8px 8px; transform:rotate(288deg); transform-origin:50% 36px;"></div>
-      <div style="position:absolute; left:26px; top:27px; width:20px; height:20px; background:#FFFBF0; border:3px solid #D4A017; border-radius:999px;"></div>
+    <div aria-hidden="true" style="width:280px; height:280px; margin:0 auto 18px; position:relative;">
+      <div style="position:absolute; top:50%; left:50%; width:80px; height:120px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; background:#D4006A; opacity:0.85; transform-origin:bottom center; transform:translate(-50%, -100%) rotate(0deg);"></div>
+      <div style="position:absolute; top:50%; left:50%; width:80px; height:120px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; background:#E8008A; opacity:0.85; transform-origin:bottom center; transform:translate(-50%, -100%) rotate(45deg);"></div>
+      <div style="position:absolute; top:50%; left:50%; width:80px; height:120px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; background:#D4006A; opacity:0.85; transform-origin:bottom center; transform:translate(-50%, -100%) rotate(90deg);"></div>
+      <div style="position:absolute; top:50%; left:50%; width:80px; height:120px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; background:#E8008A; opacity:0.85; transform-origin:bottom center; transform:translate(-50%, -100%) rotate(135deg);"></div>
+      <div style="position:absolute; top:50%; left:50%; width:80px; height:120px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; background:#D4006A; opacity:0.85; transform-origin:bottom center; transform:translate(-50%, -100%) rotate(180deg);"></div>
+      <div style="position:absolute; top:50%; left:50%; width:80px; height:120px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; background:#E8008A; opacity:0.85; transform-origin:bottom center; transform:translate(-50%, -100%) rotate(225deg);"></div>
+      <div style="position:absolute; top:50%; left:50%; width:80px; height:120px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; background:#D4006A; opacity:0.85; transform-origin:bottom center; transform:translate(-50%, -100%) rotate(270deg);"></div>
+      <div style="position:absolute; top:50%; left:50%; width:80px; height:120px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; background:#E8008A; opacity:0.85; transform-origin:bottom center; transform:translate(-50%, -100%) rotate(315deg);"></div>
+      <div style="position:absolute; top:50%; left:50%; width:80px; height:80px; margin:-40px 0 0 -40px; border-radius:50%; background:#D4A017; color:#FFFFFF; display:flex; align-items:center; justify-content:center; text-align:center; font-family:Georgia, 'Times New Roman', serif; font-size:13px; font-style:italic; line-height:1.25;">Every<br />voice</div>
     </div>
   `
+}
+
+function buildBlossomMark() {
+  return buildWebsiteFlowerMark()
 }
 
 function buildEmailShell({
@@ -68,11 +75,11 @@ function buildEmailShell({
     <div style="margin:0; padding:0; background:#FFFBF0; color:#0D0D0D; font-family:Arial, Helvetica, sans-serif; line-height:1.6;">
       <div style="max-width:700px; margin:0 auto; padding:30px 16px;">
         <div style="background:#FFFFFF; border:1px solid #F0C84A; border-radius:28px; overflow:hidden; box-shadow:0 18px 46px rgba(13,13,13,0.10);">
-          <div style="background:linear-gradient(135deg, #D4006A 0%, #E8008A 48%, #D4A017 100%); padding:32px 30px 28px; color:#FFFFFF; text-align:center;">
+          <div style="background:#FFF0F7; padding:32px 30px 28px; color:#0D0D0D; text-align:center; position:relative; overflow:hidden;">
             ${buildBlossomMark()}
-            <p style="margin:0 0 8px; font-size:12px; letter-spacing:0.20em; text-transform:uppercase; font-weight:700; color:#FFF7CC;">Saguaro Blossoms Learning</p>
-            <h1 style="margin:0; font-family:Georgia, 'Times New Roman', serif; font-size:32px; line-height:1.18; font-weight:400;">${escapeHtml(title)}</h1>
-            <p style="margin:12px auto 0; max-width:520px; font-size:16px; color:#FFF0F7;">${escapeHtml(intro)}</p>
+            <p style="margin:0 0 8px; font-size:12px; letter-spacing:0.20em; text-transform:uppercase; font-weight:700; color:#D4006A;">Saguaro Blossoms Learning</p>
+            <h1 style="margin:0; font-family:Georgia, 'Times New Roman', serif; font-size:32px; line-height:1.18; font-weight:400; color:#0D0D0D;">${escapeHtml(title)}</h1>
+            <p style="margin:12px auto 0; max-width:520px; font-size:16px; color:#3A3A3A;">${escapeHtml(intro)}</p>
           </div>
           <div style="padding:28px 30px; background:#FFFFFF;">
             ${body}
