@@ -1061,21 +1061,23 @@ body::-webkit-scrollbar {
 @media (max-width: 760px) {
   .skip-link { font-size: 0.8rem; }
   nav {
-    height: 70px;
-    min-height: 70px;
-    padding: 0 1.1rem;
+    height: auto;
+    min-height: 108px;
+    padding: 0.65rem 1.1rem 0.7rem;
     align-items: center;
-    gap: 0.75rem;
-    flex-wrap: nowrap;
+    gap: 0.55rem 0.75rem;
+    flex-wrap: wrap;
   }
   .nav-brand { font-size: clamp(1.02rem, 4.6vw, 1.22rem); min-width: 0; }
   .language-toggle {
     order: 3;
-    position: absolute;
-    top: 78px;
-    right: 1rem;
-    z-index: 102;
+    position: static;
+    z-index: auto;
+    width: max-content;
+    max-width: 100%;
+    margin: 0 auto;
     background: var(--ivory);
+    box-shadow: 0 8px 22px rgba(45, 31, 19, 0.08);
   }
   .language-toggle button { font-size: 0.68rem; padding: 0.32rem 0.55rem; }
   .mobile-menu-toggle {
@@ -1104,10 +1106,10 @@ body::-webkit-scrollbar {
   }
   .mobile-menu-backdrop {
     position: fixed;
-    inset: 70px 0 0;
+    inset: 108px 0 0;
     z-index: 99;
     width: 100vw;
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 108px);
     border: 0;
     background: rgba(255, 251, 240, 0.82);
     backdrop-filter: blur(2px);
@@ -1149,7 +1151,7 @@ body::-webkit-scrollbar {
     margin-top: 0.2rem;
     padding: 0.8rem 1rem !important;
   }
-  .page { padding-top: 70px; }
+  .page { padding-top: 108px; }
   .hero { grid-template-columns: 1fr; min-height: auto; }
   .hero-left { padding: 3rem 1.25rem 3.25rem; }
   .hero-h1 { font-size: clamp(2.45rem, 13vw, 3.3rem); line-height: 1.08; }
@@ -1191,6 +1193,17 @@ body::-webkit-scrollbar {
   }
   .features, .about-hero, .philosophy-section, .services-hero, .services-grid, .ages-strip, .contact-hero, .contact-body, footer { padding-left: 1.25rem; padding-right: 1.25rem; }
   .features-grid, .about-hero, .philosophy-grid, .services-grid, .ages-strip, .contact-body, footer { grid-template-columns: 1fr; }
+  footer {
+    padding-top: 4.25rem;
+    row-gap: 2rem;
+  }
+  .footer-brand-tagline {
+    margin-top: 0.9rem;
+    line-height: 1.9;
+  }
+  .footer-col-title {
+    margin-bottom: 0.85rem;
+  }
   .features { padding-top: 3.5rem; padding-bottom: 3.5rem; }
   .feature-card, .service-card, .philosophy-card, .contact-form-wrap { padding: 1.5rem; }
   .form-row { grid-template-columns: 1fr; }
