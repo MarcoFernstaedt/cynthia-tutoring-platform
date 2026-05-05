@@ -39,17 +39,13 @@ function escapeHtml(value: string) {
 
 function buildWebsiteFlowerMark() {
   return `
-    <div aria-hidden="true" style="width:280px; height:280px; margin:0 auto 18px; position:relative;">
-      <div style="position:absolute; top:50%; left:50%; width:80px; height:120px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; background:#D4006A; opacity:0.85; transform-origin:bottom center; transform:translate(-50%, -100%) rotate(0deg);"></div>
-      <div style="position:absolute; top:50%; left:50%; width:80px; height:120px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; background:#E8008A; opacity:0.85; transform-origin:bottom center; transform:translate(-50%, -100%) rotate(45deg);"></div>
-      <div style="position:absolute; top:50%; left:50%; width:80px; height:120px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; background:#D4006A; opacity:0.85; transform-origin:bottom center; transform:translate(-50%, -100%) rotate(90deg);"></div>
-      <div style="position:absolute; top:50%; left:50%; width:80px; height:120px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; background:#E8008A; opacity:0.85; transform-origin:bottom center; transform:translate(-50%, -100%) rotate(135deg);"></div>
-      <div style="position:absolute; top:50%; left:50%; width:80px; height:120px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; background:#D4006A; opacity:0.85; transform-origin:bottom center; transform:translate(-50%, -100%) rotate(180deg);"></div>
-      <div style="position:absolute; top:50%; left:50%; width:80px; height:120px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; background:#E8008A; opacity:0.85; transform-origin:bottom center; transform:translate(-50%, -100%) rotate(225deg);"></div>
-      <div style="position:absolute; top:50%; left:50%; width:80px; height:120px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; background:#D4006A; opacity:0.85; transform-origin:bottom center; transform:translate(-50%, -100%) rotate(270deg);"></div>
-      <div style="position:absolute; top:50%; left:50%; width:80px; height:120px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; background:#E8008A; opacity:0.85; transform-origin:bottom center; transform:translate(-50%, -100%) rotate(315deg);"></div>
-      <div style="position:absolute; top:50%; left:50%; width:80px; height:80px; margin:-40px 0 0 -40px; border-radius:50%; background:#D4A017; color:#FFFFFF; display:flex; align-items:center; justify-content:center; text-align:center; font-family:Georgia, 'Times New Roman', serif; font-size:13px; font-style:italic; line-height:1.25;">Every<br />voice</div>
-    </div>
+    <img
+      src="https://saguaroblossomslearningservices.com/saguaro-blossom-email.svg"
+      alt="Decorative Saguaro Blossoms flower"
+      width="280"
+      height="280"
+      style="display:block; width:100%; max-width:280px; height:auto; margin:0 auto 18px; border:0; outline:none; text-decoration:none;"
+    />
   `
 }
 

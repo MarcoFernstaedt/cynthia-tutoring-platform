@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" role="img" aria-labelledby="title desc">
+  <title id="title">Decorative Saguaro Blossoms flower</title>
+  <desc id="desc">Eight alternating magenta and bright pink petals around a gold center, matching the Saguaro Blossoms Learning website flower.</desc>
+  <rect x="0" y="0" width="280" height="280" fill="none"/>
+  <g opacity="0.85">
+    <rect x="100" y="20" width="80" height="120" rx="40" ry="58" fill="#D4006A" transform="rotate(0 140 140)"/>
+    <rect x="100" y="20" width="80" height="120" rx="40" ry="58" fill="#E8008A" transform="rotate(45 140 140)"/>
+    <rect x="100" y="20" width="80" height="120" rx="40" ry="58" fill="#D4006A" transform="rotate(90 140 140)"/>
+    <rect x="100" y="20" width="80" height="120" rx="40" ry="58" fill="#E8008A" transform="rotate(135 140 140)"/>
+    <rect x="100" y="20" width="80" height="120" rx="40" ry="58" fill="#D4006A" transform="rotate(180 140 140)"/>
+    <rect x="100" y="20" width="80" height="120" rx="40" ry="58" fill="#E8008A" transform="rotate(225 140 140)"/>
+    <rect x="100" y="20" width="80" height="120" rx="40" ry="58" fill="#D4006A" transform="rotate(270 140 140)"/>
+    <rect x="100" y="20" width="80" height="120" rx="40" ry="58" fill="#E8008A" transform="rotate(315 140 140)"/>
+  </g>
+  <circle cx="140" cy="140" r="40" fill="#D4A017"/>
+  <text x="140" y="133" text-anchor="middle" fill="#FFFFFF" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-style="italic">Every</text>
+  <text x="140" y="151" text-anchor="middle" fill="#FFFFFF" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-style="italic">voice</text>
+</svg>

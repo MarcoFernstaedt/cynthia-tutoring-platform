@@ -19,6 +19,7 @@ const packageJson = read('package.json')
 const seo = read('app/seo.ts')
 const sitemap = read('app/sitemap.ts')
 const robots = read('app/robots.ts')
+const blossomSvg = read('public/saguaro-blossom-email.svg')
 
 function fail(message) {
   console.error(message)
@@ -299,13 +300,8 @@ for (const marker of [
   'buildBlossomMark',
   'background:#FFF0F7',
   'buildWebsiteFlowerMark',
-  'Every<br />voice',
-  'rotate(45deg)',
-  'rotate(315deg)',
-  'width:80px; height:120px',
-  'background:#D4006A',
-  'background:#E8008A',
-  'background:#D4A017',
+  'https://saguaroblossomslearningservices.com/saguaro-blossom-email.svg',
+  'alt="Decorative Saguaro Blossoms flower"',
   'Your inquiry was received',
   'Thank you for reaching out to Saguaro Blossoms Learning',
   'Every learner blossoms at their own pace',
@@ -314,6 +310,20 @@ for (const marker of [
   'reply_to: to',
   'Promise.all',
 ]) requireIncludes(contactApi, marker)
+
+for (const marker of [
+  '<svg',
+  'viewBox="0 0 280 280"',
+  'Decorative Saguaro Blossoms flower',
+  'rotate(45 140 140)',
+  'rotate(315 140 140)',
+  'width="80" height="120"',
+  'fill="#D4006A"',
+  'fill="#E8008A"',
+  'fill="#D4A017"',
+  'Every',
+  'voice',
+]) requireIncludes(blossomSvg, marker)
 
 requireIncludes(nextConfig, "...(isGithubPages ? { output: 'export'", 'GitHub Pages export only when requested')
 if (nextConfig.includes("output: 'export',\n  trailingSlash")) fail('Next config exports unconditionally, which prevents API routes on Vercel')
