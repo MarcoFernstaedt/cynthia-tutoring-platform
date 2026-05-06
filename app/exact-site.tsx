@@ -22,6 +22,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
   const [activePage, setActivePage] = useState<PageName>(initialPage)
   const [language, setLanguage] = useState<Language>('en')
   const [menuOpen, setMenuOpen] = useState(false)
+  const [contactFormStarted, setContactFormStarted] = useState(false)
 
   const copy = {
     en: {
@@ -93,6 +94,27 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  function navigatePage(pageName: PageName, source: string) {
+    track('nav_page_click', { page: pageName, source })
+    if (pageName === 'services') {
+      track('pricing_package_view', { source: `${source}_nav` })
+    }
+    if (pageName === 'contact') {
+      track('consultation_cta_click', { source: `${source}_nav` })
+    }
+    showPage(pageName)
+  }
+
+  function trackServiceTopic(topic: string, source: string) {
+    track('seo_topic_click', { topic, source })
+  }
+
+  function trackContactFormStart() {
+    if (contactFormStarted) return
+    setContactFormStarted(true)
+    track('contact_form_start', { source: 'contact_form' })
+  }
+
   function switchLanguage(nextLanguage: Language) {
     track('language_switch', { language: nextLanguage })
     setLanguage(nextLanguage)
@@ -113,7 +135,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
     <>
       <a className="skip-link" href="#main-content">Skip to main content</a>
       <nav aria-label="Primary navigation">
-        <Link className="nav-brand" href="/" onClick={(event) => { event.preventDefault(); showPage('home') }} aria-label="Saguaro Blossoms home">
+        <Link className="nav-brand" href="/" onClick={(event) => { event.preventDefault(); navigatePage('home', 'header_brand') }} aria-label="Saguaro Blossoms home">
           <span className="nav-brand-dot" aria-hidden="true"></span>
           Saguaro Blossoms
         </Link>
@@ -137,7 +159,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
                 id={`nav-${page}`}
                 className={cx(activePage === page)}
                 aria-current={activePage === page ? 'page' : undefined}
-                onClick={(event) => { event.preventDefault(); showPage(page) }}
+                onClick={(event) => { event.preventDefault(); navigatePage(page, 'header_nav') }}
               >
                 {page === 'home' ? t.home : page === 'about' ? t.about : t.services}
               </Link>
@@ -149,7 +171,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
               id="nav-contact"
               className={`nav-cta ${activePage === 'contact' ? 'active' : ''}`}
               aria-current={activePage === 'contact' ? 'page' : undefined}
-              onClick={(event) => { event.preventDefault(); showPage('contact') }}
+              onClick={(event) => { event.preventDefault(); navigatePage('contact', 'header_cta') }}
             >
               {t.getStarted}
             </Link>
@@ -247,12 +269,12 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
                 {t.seoPoints.map((item) => <li key={item}>{item}</li>)}
               </ul>
               <div className="seo-internal-links" aria-label="Tutoring topics">
-                <Link href="/reading-tutoring/">Reading tutoring</Link>
-                <Link href="/writing-tutoring/">Writing tutoring</Link>
-                <Link href="/esl-tutoring/">ESL tutoring</Link>
-                <Link href="/homeschool-support/">Homeschool support</Link>
-                <Link href="/az-esa-tutoring/">AZ ESA tutoring</Link>
-                <Link href="/tucson-tutoring/">Tucson tutoring</Link>
+                <Link href="/reading-tutoring/" onClick={() => trackServiceTopic('reading_tutoring', 'home_seo')}>Reading tutoring</Link>
+                <Link href="/writing-tutoring/" onClick={() => trackServiceTopic('writing_tutoring', 'home_seo')}>Writing tutoring</Link>
+                <Link href="/esl-tutoring/" onClick={() => trackServiceTopic('esl_tutoring', 'home_seo')}>ESL tutoring</Link>
+                <Link href="/homeschool-support/" onClick={() => trackServiceTopic('homeschool_support', 'home_seo')}>Homeschool support</Link>
+                <Link href="/az-esa-tutoring/" onClick={() => trackServiceTopic('az_esa_tutoring', 'home_seo')}>AZ ESA tutoring</Link>
+                <Link href="/tucson-tutoring/" onClick={() => trackServiceTopic('tucson_tutoring', 'home_seo')}>Tucson tutoring</Link>
               </div>
             </div>
           </section>
@@ -507,6 +529,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
               action="/api/contact"
               method="POST"
               aria-labelledby="contact-form-title"
+              onFocusCapture={trackContactFormStart}
               onSubmit={() => track('contact_form_submit', { source: 'contact_form' })}
             >
               <input type="hidden" name="_subject" value="New Saguaro Blossoms Learning inquiry" />
@@ -577,21 +600,21 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
         <div>
           <div className="footer-col-title">Navigate</div>
           <ul className="footer-links">
-            <li><Link href="/" onClick={(event) => { event.preventDefault(); showPage('home') }}>Home</Link></li>
-            <li><Link href="/about/" onClick={(event) => { event.preventDefault(); showPage('about') }}>About</Link></li>
-            <li><Link href="/services/" onClick={(event) => { event.preventDefault(); showPage('services') }}>Services</Link></li>
-            <li><Link href="/contact/" onClick={(event) => { event.preventDefault(); showPage('contact') }}>Contact</Link></li>
+            <li><Link href="/" onClick={(event) => { event.preventDefault(); navigatePage('home', 'footer_nav') }}>Home</Link></li>
+            <li><Link href="/about/" onClick={(event) => { event.preventDefault(); navigatePage('about', 'footer_nav') }}>About</Link></li>
+            <li><Link href="/services/" onClick={(event) => { event.preventDefault(); navigatePage('services', 'footer_nav') }}>Services</Link></li>
+            <li><Link href="/contact/" onClick={(event) => { event.preventDefault(); navigatePage('contact', 'footer_nav') }}>Contact</Link></li>
           </ul>
         </div>
         <div>
           <div className="footer-col-title">Services</div>
           <ul className="footer-links">
-            <li><Link href="/reading-tutoring/">Reading Development</Link></li>
-            <li><Link href="/writing-tutoring/">Writing &amp; Expression</Link></li>
-            <li><Link href="/esl-tutoring/">ESL Support</Link></li>
-            <li><Link href="/homeschool-support/">Homeschool Support</Link></li>
-            <li><Link href="/az-esa-tutoring/">AZ ESA Tutoring</Link></li>
-            <li><Link href="/tucson-tutoring/">Tucson Tutoring</Link></li>
+            <li><Link href="/reading-tutoring/" onClick={() => trackServiceTopic('reading_tutoring', 'footer_services')}>Reading Development</Link></li>
+            <li><Link href="/writing-tutoring/" onClick={() => trackServiceTopic('writing_tutoring', 'footer_services')}>Writing &amp; Expression</Link></li>
+            <li><Link href="/esl-tutoring/" onClick={() => trackServiceTopic('esl_tutoring', 'footer_services')}>ESL Support</Link></li>
+            <li><Link href="/homeschool-support/" onClick={() => trackServiceTopic('homeschool_support', 'footer_services')}>Homeschool Support</Link></li>
+            <li><Link href="/az-esa-tutoring/" onClick={() => trackServiceTopic('az_esa_tutoring', 'footer_services')}>AZ ESA Tutoring</Link></li>
+            <li><Link href="/tucson-tutoring/" onClick={() => trackServiceTopic('tucson_tutoring', 'footer_services')}>Tucson Tutoring</Link></li>
           </ul>
         </div>
       </footer>

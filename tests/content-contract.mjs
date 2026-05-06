@@ -133,8 +133,14 @@ for (const marker of [
   "track('language_switch'",
   "track('consultation_cta_click'",
   "track('services_cta_click'",
+  "track('contact_form_start'",
   "track('contact_form_submit'",
   "track('pricing_package_view'",
+  "track('nav_page_click'",
+  "track('seo_topic_click'",
+  'onFocusCapture={trackContactFormStart}',
+  "trackServiceTopic('reading_tutoring'",
+  "trackServiceTopic('az_esa_tutoring'",
 ]) requireIncludes(exactSite, marker)
 
 
