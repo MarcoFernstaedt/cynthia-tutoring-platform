@@ -27,7 +27,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
   const copy = {
     en: {
       home: 'Home', about: 'About', services: 'Services', getStarted: 'Get Started',
-      location: 'Tucson, Arizona', heroTitle: <>Where every<br />learner <em>blossoms</em><br />at their own pace</>,
+      location: 'Tucson, Arizona • Online', heroTitle: <>Where every<br />learner <em>blossoms</em><br />at their own pace</>,
       heroTagline: 'Learning as unique and vivid as the saguaro blossom. Rooted in growth. Grounded in possibility.',
       begin: 'Begin Your Journey', explore: 'Explore Services',
       strip: ['Nurturing readers', 'Nurturing writers', 'Nurturing confidence', 'K–12 · College · Adult · ESL · Homeschool', 'Donde cada estudiante florece'],
@@ -55,7 +55,7 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
     },
     es: {
       home: 'Inicio', about: 'Acerca de', services: 'Servicios', getStarted: 'Comenzar',
-      location: 'Tucson, Arizona', heroTitle: <>Donde cada<br />estudiante <em>florece</em><br />a su propio ritmo</>,
+      location: 'Tucson, Arizona • Online', heroTitle: <>Donde cada<br />estudiante <em>florece</em><br />a su propio ritmo</>,
       heroTagline: 'Aprendizaje tan único y vivo como la flor del saguaro. Con raíces en el crecimiento y basado en la posibilidad.',
       begin: 'Comienza tu camino', explore: 'Explorar servicios',
       strip: ['Lectores en crecimiento', 'Escritores en crecimiento', 'Confianza en crecimiento', 'K–12 · Universidad · Adultos · ESL · Educación en casa', 'Donde cada estudiante florece a su propio ritmo'],

@@ -16,6 +16,10 @@
     --mid:         #1F1F1F;
     --muted:       #3A3A3A;
     --white:       #FFFFFF;
+    --sage:        #4A7C59;
+    --sage-light:  #6FAA80;
+    --sage-pale:   #EBF4EF;
+    --sage-muted:  #2E5C3A;
     --font-display: 'Playfair Display', Georgia, serif;
     --font-body:    'DM Sans', sans-serif;
   }
@@ -646,7 +650,7 @@
   }
 
   .service-card:nth-child(2) .service-tag { color: var(--dark); background: var(--gold-pale); }
-  .service-card:nth-child(3) .service-tag { color: var(--dark); background: #FFF0F7; }
+  .service-card:nth-child(3) .service-tag { color: var(--sage-muted); background: var(--sage-pale); }
   .service-card:nth-child(4) .service-tag { color: var(--dark); background: var(--pink-pale); }
 
   .service-card h3 {
@@ -858,16 +862,17 @@
 
   .form-success {
     display: none;
-    margin-top: 1rem;
-    background: var(--gold-pale);
-    border: 1px solid var(--gold-light);
-    border-radius: 4px;
-    padding: 1rem 1.25rem;
-    font-family: var(--font-display);
-    font-style: italic;
+    margin-top: 1.25rem;
+    background: var(--sage-pale);
+    border: 1px solid var(--sage-light);
+    border-left: 4px solid var(--sage);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    font-family: var(--font-body);
     font-size: 0.95rem;
-    color: var(--dark);
-    text-align: center;
+    color: var(--sage-muted);
+    font-weight: 500;
+    text-align: left;
   }
 
   /* FOOTER */
