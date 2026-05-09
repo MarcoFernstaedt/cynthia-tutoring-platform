@@ -38,7 +38,7 @@
     z-index: 100;
     background: rgba(255, 251, 240, 0.96);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(212, 160, 23, 0.25);
+    border-bottom: 1px solid rgba(74, 124, 89, 0.25);
     padding: 0 3rem;
     display: flex;
     align-items: center;
@@ -361,7 +361,7 @@
   .tagline-strip-dot {
     width: 6px; height: 6px;
     border-radius: 50%;
-    background: var(--gold-light);
+    background: var(--sage-light);
     flex-shrink: 0;
   }
 
@@ -1266,7 +1266,7 @@ body::-webkit-scrollbar {
 .seo-service-list li {
   padding: 0.85rem 1rem;
   border-radius: 999px;
-  background: rgba(244, 184, 76, 0.18);
+  background: rgba(74, 124, 89, 0.15);
   color: var(--dark);
   font-weight: 700;
 }
@@ -1350,23 +1350,6 @@ body::-webkit-scrollbar {
   }
 }
 
-.seo-internal-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
-  margin-top: 1.2rem;
-}
-
-.seo-internal-links a {
-  color: var(--dark);
-  text-decoration: none;
-  font-size: 0.82rem;
-  font-weight: 700;
-  padding: 0.55rem 0.85rem;
-  border-radius: 999px;
-  border: 1px solid rgba(212, 160, 23, 0.35);
-  background: rgba(255, 255, 255, 0.78);
-}
 
 .faq-section {
   width: min(1120px, calc(100% - 2rem));
@@ -1561,19 +1544,6 @@ body::-webkit-scrollbar {
   top: 0;
 }
 
-/* Hover state for SEO internal topic links */
-.seo-internal-links a:hover {
-  background: var(--pink-pale);
-  border-color: rgba(212, 0, 106, 0.35);
-  color: var(--pink);
-  transition: background 0.18s, border-color 0.18s, color 0.18s;
-}
-
-/* Subtle focus ring for keyboard navigation on SEO links */
-.seo-internal-links a:focus-visible {
-  outline: 2px solid var(--pink);
-  outline-offset: 2px;
-}
 
 /* Landing nav hover state for service links */
 .landing-nav-links a:not(.nav-cta):hover {

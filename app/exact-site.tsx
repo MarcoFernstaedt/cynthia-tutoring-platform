@@ -268,14 +268,6 @@ export default function ExactSaguaroSite({ initialPage = 'home' }: { initialPage
               <ul className="seo-service-list" aria-label={language === 'en' ? 'Tutoring service highlights' : 'Puntos destacados de tutoría'}>
                 {t.seoPoints.map((item) => <li key={item}>{item}</li>)}
               </ul>
-              <div className="seo-internal-links" aria-label="Tutoring topics">
-                <Link href="/reading-tutoring/" onClick={() => trackServiceTopic('reading_tutoring', 'home_seo')}>Reading tutoring</Link>
-                <Link href="/writing-tutoring/" onClick={() => trackServiceTopic('writing_tutoring', 'home_seo')}>Writing tutoring</Link>
-                <Link href="/esl-tutoring/" onClick={() => trackServiceTopic('esl_tutoring', 'home_seo')}>ESL tutoring</Link>
-                <Link href="/homeschool-support/" onClick={() => trackServiceTopic('homeschool_support', 'home_seo')}>Homeschool support</Link>
-                <Link href="/az-esa-tutoring/" onClick={() => trackServiceTopic('az_esa_tutoring', 'home_seo')}>AZ ESA tutoring</Link>
-                <Link href="/tucson-tutoring/" onClick={() => trackServiceTopic('tucson_tutoring', 'home_seo')}>Tucson tutoring</Link>
-              </div>
             </div>
           </section>
 
