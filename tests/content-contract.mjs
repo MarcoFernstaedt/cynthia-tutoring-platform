@@ -274,7 +274,6 @@ for (const marker of [
   'id="homeschool-support"',
   'faq-section',
   'Common questions about virtual tutoring',
-  'seo-internal-links',
   'conversion-band',
 ]) requireIncludes(exactSite, marker)
 

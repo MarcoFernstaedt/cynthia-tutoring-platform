@@ -38,7 +38,7 @@
     z-index: 100;
     background: rgba(255, 251, 240, 0.96);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(74, 124, 89, 0.25);
+    border-bottom: 1px solid rgba(212, 160, 23, 0.25);
     padding: 0 3rem;
     display: flex;
     align-items: center;
@@ -361,7 +361,7 @@
   .tagline-strip-dot {
     width: 6px; height: 6px;
     border-radius: 50%;
-    background: var(--sage-light);
+    background: var(--gold-light);
     flex-shrink: 0;
   }
 
@@ -950,7 +950,6 @@
     margin: 0 0.5rem;
     vertical-align: middle;
   }
-
 /* Next.js conversion accessibility/mobile enhancements: appended only after the exact desktop reference CSS above. */
 .skip-link {
   position: fixed;
@@ -1580,4 +1579,13 @@ body::-webkit-scrollbar {
   color: var(--sage-muted);
   font-weight: 500;
   text-align: left;
+}
+
+/* Claude styling overrides appended after protected desktop reference CSS. */
+nav {
+  border-bottom-color: rgba(74, 124, 89, 0.25);
+}
+
+.tagline-strip-dot {
+  background: var(--sage-light);
 }
